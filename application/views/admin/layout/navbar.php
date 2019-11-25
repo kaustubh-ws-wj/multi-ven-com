@@ -150,19 +150,19 @@
         <li class="nav-item">
             <a class="nav-link" href="index.html">
             <span class="menu-title">Products</span>
-            <i class="icon-screen-desktop menu-icon"></i>
+            <i class="icon-handbag menu-icon"></i>
             </a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="index.html">
             <span class="menu-title">Vendors</span>
-            <i class="icon-screen-desktop menu-icon"></i>
+            <i class="icon-user-follow menu-icon"></i>
             </a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="index.html">
             <span class="menu-title">Customers</span>
-            <i class="icon-screen-desktop menu-icon"></i>
+            <i class="icon-people menu-icon"></i>
             </a>
         </li>
         </ul>
