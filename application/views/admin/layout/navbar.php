@@ -158,7 +158,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="<?php echo base_url();?>admin/vendors">
+            <a class="nav-link" href="<?php echo base_url();?>admin/vendor">
             <span class="menu-title">Vendors</span>
             <i class="icon-user-follow menu-icon"></i>
             </a>

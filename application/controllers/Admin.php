@@ -115,23 +115,23 @@ class Admin extends MY_Controller {
             $this->db->where('id', $para2);
             $this->db->update('product', $data);
             $this->session->set_flashdata('success', 'Product Updated Successfully !');
-            redirect('vendor/product');
+            redirect('admin/product');
 
         } else if ($para1 == 'edit') {
             $data['product_data'] = $this->db->get_where('product', array(
                 'id' => $para2
             ))->result_array();
             //print_r($data['product_data']);die;
-            $data['template'] = "admin/product_edit";
-            $data['name'] = "admin/product_edit";
-            $this->user_layout($data);
+            $data['template'] ="product_edit";
+            $data['name'] ="product_edit";
+            $this->admin_layout($data);
         } else if ($para1 == 'view') {
            /*  $data['product_data'] = $this->db->get_where('product', array(
                 'product_id' => $para2
             ))->result_array(); */
-            $data['template'] = "admin/product_view";
-            $data['name'] = "admin/product_view";
-            $this->user_layout($data);
+            $data['template'] ="product_view";
+            $data['name'] ="product_view";
+            $this->admin_layout($data);
         } else if ($para1 == 'delete') {
             $this->Services_model->file_dlt('product', $para2, '.jpg', 'multi');
             $this->db->where('id', $para2);
@@ -142,9 +142,9 @@ class Admin extends MY_Controller {
             $this->db->order_by('id', 'desc');
             $this->db->where('added_by',json_encode(array('type'=>'vendor','id'=>$this->session->userdata('vendor_id'))));
             $data['all_product'] = $this->db->get('product')->result_array();
-            $data['template'] = "admin/product_list";
-            $data['name'] = "admin/product_list";
-            $this->user_layout($data);
+            $data['template'] ="product_list";
+            $data['name'] ="product_list";
+            $this->admin_layout($data);
         } else if ($para1 == 'list_data') {
             $limit      = $this->input->get('limit');
             $search     = $this->input->get('search');
@@ -212,19 +212,69 @@ class Admin extends MY_Controller {
             $this->Services_model->file_dlt('product', $a[0], '.jpg', 'multi', $a[1]);
             //recache();
         } else if ($para1 == 'add') {
-            $data['template'] = "admin/product_add";
-            $data['name'] = "admin/product_add";
-            $this->user_layout($data);
+            $data['template'] ="product_add";
+            $data['name'] ="product_add";
+            $this->admin_layout($data);
         } else {
             //$page_data['page_name']   = "product";
             $this->db->where('added_by',json_encode(array('type'=>'vendor','id'=>$this->session->userdata('vendor_id'))));
             $data['all_product'] = $this->db->get('product')->result_array();
-            $data['template'] = "admin/product_list";
-            $data['name'] = "admin/product_list";
-            $this->user_layout($data);
+            $data['template'] ="product_list";
+            $data['name'] ="product_list";
+            $this->admin_layout($data);
         }
     }
 
+
+    /* Vendor Management */
+    function vendor($para1 = '', $para2 = '', $para3 = '')
+    {
+        
+        if ($para1 == 'delete') {
+            /* delete vendor products start */
+            $this->db->where('added_by',json_encode(array('type'=>'vendor','id'=>$para2)));
+            $products = $this->db->get('product')->result_array();
+            $ids= array();
+            foreach($products as $row){
+                $this->Services_model->file_dlt('product',$row['id'], '.jpg', 'multi');
+                $this->db->where('id', $row['id']);
+                $this->db->delete('product');
+            }
+            /* delete vendor products end */
+			$this->db->where('id', $para2);
+            $this->db->delete('vendor');
+            recache();
+        } else if ($para1 == 'list') {
+            $this->db->order_by('id', 'desc');
+            $data['all_vendors'] = $this->db->get('vendor')->result_array();
+            $data['template'] ="vendor_list";
+            $data['name'] ="vendor_list";
+            $this->admin_layout($data);
+        } else if ($para1 == 'view') {
+            $data['vendor_data'] = $this->db->get_where('vendor', array(
+                'id' => $para2
+            ))->result_array();
+            $data['template'] ="vendor_view";
+            $data['name'] ="vendor_view";
+            $this->admin_layout($data);
+        } else if ($para1 == 'approval_set') {
+            $vendor = $para2;
+			$approval = $this->input->post('approval');
+            if ($approval == 'ok') {
+                $data['status'] = 'approved';
+            } else {
+                $data['status'] = 'pending';
+            }
+            $this->db->where('id', $vendor);
+            $this->db->update('vendor', $data);
+            recache();
+        } else { 
+            $data['all_vendors'] = $this->db->get('vendor')->result_array();
+            $data['template'] ="vendor_list";
+            $data['name'] ="vendor_list";
+            $this->admin_layout($data);
+        }
+    }
 
 }
 
