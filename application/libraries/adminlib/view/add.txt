@@ -1,0 +1,45 @@
+
+<div id="page-wrapper" class="gray-bg dashbard-1" ng-controller="State">
+    <div class="content-main">
+        <!--banner-->	
+        <?php $this->load->view('admin/layout/breadcrumb') ?>
+        <!--//banner-->
+        <!--content-->
+        <div class="content-top">
+            <div class="col-md-12">
+                <?php
+                if ($this->session->flashdata('message')) {
+                    echo flash_message();
+                }
+                ?>
+                <div class="content-top-1">
+                    <form action="<?= site_url('admin/save_{menu_name}'); ?>" method="POST">
+                        <div class="modal-body">
+                            {input_content}
+                            <div class="form-group">
+                                <label>Status</label>
+                                <?php echo form_dropdown('status', array('Active' => "Active", 'Deactive' => "Deactive"), set_value('status', ''), 'class="form-control" placeholder="Select Status"'); ?>
+                                <span class="help-block"><?php echo form_error('status'); ?></span>
+                            </div>
+
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-default">Submit</button>
+                            <a href="<?php print base_url(); ?>{url}"><button type="button" class="btn default">Cancel</button></a>
+                        </div>
+                    </form>
+                </div>  
+            </div>
+        </div>
+        <div class="clearfix"> </div>
+    </div>
+</div>
+</div>
+<script>
+    function validateAlpha() {
+        var textInput = document.getElementById("cname").value;
+        textInput = textInput.replace(/[^A-Za-z ]/g, "");
+        document.getElementById("cname").value = textInput;
+    }
+</script>

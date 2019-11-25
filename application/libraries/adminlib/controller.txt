@@ -1,0 +1,98 @@
+// <------{menu_name} Start---->
+    public function {menu_name}() {
+//        $this->data['data'] = $this->{model_name}->get{menu_name}();
+        $this->data['template'] = "{template_name_list}";
+        $this->data['bc'] = array(array('link' => site_url('admin'), 'page' => "Home"), array('link' => '#', 'page' => "{name}"));
+        $this->admin_layout($this->data);
+    }
+
+    public function edit_{menu_name}($id) {
+        $this->data['data'] = $this->{model_name}->get{menu_name}($id);
+        $this->data['template'] = "{template_name_edit}";
+        $this->data['bc'] = array(array('link' => site_url('admin'), 'page' => "Home"), array('link' => '#', 'page' => "Edit {name}"));
+        $this->admin_layout($this->data);
+    }
+
+    public function save_{menu_name}() {
+       {add_rules}
+        $this->form_validation->set_rules('status', 'Status', 'required');
+        if ($this->form_validation->run() == FALSE) {
+            $this->add_{menu_name}();
+        } else {
+            $result = $this->{model_name}->save{menu_name}();
+            if ($result == true) {
+                $this->session->set_flashdata('message', array('title' => '', 'content' => '{name} Added Successfully.', 'type' => 's'));
+                redirect('{url}');
+            } else {
+                $this->session->set_flashdata('message', array('title' => '', 'content' => '{name} Not Added.', 'type' => 'e'));
+                redirect('admin/add_{menu_name}');
+            }
+        }
+    }
+
+    public function update_{menu_name}() {
+        {edit_rules}
+        $this->form_validation->set_rules('status', ' Status', 'required');
+        if ($this->form_validation->run() == FALSE) {
+            $this->edit_{menu_name}();
+        } else {
+            $result = $this->{model_name}->update{menu_name}($_POST);
+            if ($result == true) {
+                $this->session->set_flashdata('message', array('title' => '', 'content' => '{name} Updated Successfully.', 'type' => 's'));
+                redirect('admin/{template_name_list}');
+            } else {
+                $this->session->set_flashdata('message', array('title' => '', 'content' => '{name} Not Updated.', 'type' => 'e'));
+                redirect('admin/edit_{menu_name}');
+            }
+        }
+    }
+
+    public function delete_{menu_name}($id) {
+        $result = $this->{model_name}->delete{menu_name}($id);
+        if ($result == true) {
+            $this->session->set_flashdata('message', array('title' => '', 'content' => '{name} Record  Deleted Succesfully.', 'type' => 's'));
+            redirect('{url}');
+        } else {
+            $this->session->set_flashdata('message', array('title' => '', 'content' => '{name} Record Not deleted.', 'type' => 'e'));
+            redirect('{url}');
+        }
+    }
+
+    public function add_{menu_name}() {
+        $this->data['template'] = "{template_name_add}";
+        $this->data['bc'] = array(array('link' => site_url('admin'), 'page' => "Home"), array('link' => '#', 'page' => "Add {name}"));
+        $this->admin_layout($this->data);
+    }
+
+    public function get{menu_name}data() {
+        $this->load->library('datatables');
+//        $detail_link = anchor('forms/view/$1', '<i class="fa fa-file-text-o"></i> ' . '{name} Details');
+        $edit_link = anchor('admin/{controller_name}/edit_{menu_name}/$1', '<i class="fa fa-file-text-o"></i> ' . '{name} Edit');
+        $delete_link = anchor('admin/{controller_name}/delete_{menu_name}/$1', '<i class="fa fa-trash"></i> ' . '{name} Delete');
+        $action = '<div class="text-center"><div class="btn-group text-left">'
+                . '<button type="button" class="btn btn-default btn-xs btn-primary dropdown-toggle" data-toggle="dropdown">'
+                . 'Actions' . ' <i style="color:#fff" class="fa fa-caret-down"></i></button>
+		<ul class="dropdown-menu pull-right" role="menu">
+			<li>' . $edit_link . '</li>
+			<li>' . $delete_link . '</li>
+			</ul>
+		</div></div>';
+        $this->load->model('admin/Setting_model');
+        $result = $this->Setting_model->get_UserGroup();
+        if ($result->group_id == 1) {
+            $this->datatables
+                    ->select("{table_fields}")
+                    ->from('{table_name}');
+            $this->datatables->add_column("Actions", $action, "id");
+            echo $this->datatables->generate();
+        } else {
+            $this->datatables
+                    ->select("{table_fields}")
+                    ->from('{table_name}')
+                    ->where('{table_userby_filed}', $this->session->userdata('user_id'));
+            $this->datatables->add_column("Actions", $action, "id");
+            echo $this->datatables->generate();
+        }
+    }
+
+// <------{menu_name} End---->

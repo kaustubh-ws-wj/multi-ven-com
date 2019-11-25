@@ -1,0 +1,14 @@
+<?php
+
+class {controller_name} extends MY_Controller {
+
+    function __construct() {
+        parent::__construct();
+        $this->load->model('admin/{model_name}');
+        $this->load->model('admin/Setting_model');
+        $this->load->library('form_validation');
+        $this->load->helper('message');
+        $this->load->helper(array('url', 'form'));
+        $this->load->library('session');
+        $this->data['filters'] = $this->session->userdata('filters');
+    }
