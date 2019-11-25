@@ -94,7 +94,7 @@ class Admin extends MY_Controller {
             $id = $this->db->insert_id();
             $this->Services_model->file_up("images", "product", $id, 'multi');
             $this->session->set_flashdata('success', 'Product Added Successfully !');
-            redirect('vendor/product');
+            redirect('admin/product');
             //$this->Services_model->set_category_data(0);
         } else if ($para1 == "update") {
             $options = array();
@@ -122,28 +122,28 @@ class Admin extends MY_Controller {
                 'id' => $para2
             ))->result_array();
             //print_r($data['product_data']);die;
-            $data['template'] = "vendor/edit_product";
-            $data['name'] = "vendor/edit_product";
+            $data['template'] = "admin/product_edit";
+            $data['name'] = "admin/product_edit";
             $this->user_layout($data);
         } else if ($para1 == 'view') {
            /*  $data['product_data'] = $this->db->get_where('product', array(
                 'product_id' => $para2
             ))->result_array(); */
-            $data['template'] = "vendor/view_product";
-            $data['name'] = "vendor/view_product";
+            $data['template'] = "admin/product_view";
+            $data['name'] = "admin/product_view";
             $this->user_layout($data);
         } else if ($para1 == 'delete') {
             $this->Services_model->file_dlt('product', $para2, '.jpg', 'multi');
             $this->db->where('id', $para2);
             $this->db->delete('product');
             $this->session->set_flashdata('success', 'Product Deleted Successfully !');
-            redirect('vendor/product');
+            redirect('admin/product');
         } else if ($para1 == 'list') {
             $this->db->order_by('id', 'desc');
             $this->db->where('added_by',json_encode(array('type'=>'vendor','id'=>$this->session->userdata('vendor_id'))));
             $data['all_product'] = $this->db->get('product')->result_array();
-            $data['template'] = "vendor/product_list";
-            $data['name'] = "vendor/product_list";
+            $data['template'] = "admin/product_list";
+            $data['name'] = "admin/product_list";
             $this->user_layout($data);
         } else if ($para1 == 'list_data') {
             $limit      = $this->input->get('limit');
@@ -212,18 +212,20 @@ class Admin extends MY_Controller {
             $this->Services_model->file_dlt('product', $a[0], '.jpg', 'multi', $a[1]);
             //recache();
         } else if ($para1 == 'add') {
-            $data['template'] = "vendor/add_product";
-            $data['name'] = "vendor/add_product";
+            $data['template'] = "admin/product_add";
+            $data['name'] = "admin/product_add";
             $this->user_layout($data);
         } else {
             //$page_data['page_name']   = "product";
             $this->db->where('added_by',json_encode(array('type'=>'vendor','id'=>$this->session->userdata('vendor_id'))));
             $data['all_product'] = $this->db->get('product')->result_array();
-            $data['template'] = "vendor/product_list";
-            $data['name'] = "vendor/product_list";
+            $data['template'] = "admin/product_list";
+            $data['name'] = "admin/product_list";
             $this->user_layout($data);
         }
     }
+
+
 }
 
 /* End of file Admin.php */
