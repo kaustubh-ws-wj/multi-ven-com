@@ -14,7 +14,7 @@
     </div>
     <!-- container-scroller -->
     <!-- plugins:js -->
-    <script src="<?php echo ADMINASSETS; ?>vendors/js/vendor.bundle.base.js"></script>
+    
     <!-- endinject -->
     <!-- Plugin js for this page -->
     <script src="<?php echo ADMINASSETS; ?>vendors/chart.js/Chart.min.js"></script>
@@ -25,6 +25,7 @@
     <script src="<?php echo ADMINASSETS; ?>vendors/daterangepicker/daterangepicker.js"></script>
     <script src="<?php echo ADMINASSETS; ?>vendors/chartist/chartist.min.js"></script>
     <script src="<?php echo ADMINASSETS; ?>vendors/progressbar.js/progressbar.min.js"></script>
+    
     <!-- End plugin js for this page -->
     <!-- inject:js -->
     <script src="<?php echo ADMINASSETS; ?>js/off-canvas.js"></script>

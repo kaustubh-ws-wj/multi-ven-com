@@ -138,9 +138,7 @@
             </div>
             </a>
         </li>
-        <li class="nav-item nav-category">
-            <span class="nav-link">Dashboard</span>
-        </li>
+       
         <li class="nav-item">
             <a class="nav-link" href="index.html">
             <span class="menu-title">Dashboard</span>
@@ -148,21 +146,27 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="index.html">
+            <a class="nav-link" href="<?php echo base_url();?>admin/category">
+            <span class="menu-title">Category</span>
+            <i class="icon-list menu-icon"></i>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="<?php echo base_url();?>admin/product">
             <span class="menu-title">Products</span>
-            <i class="icon-screen-desktop menu-icon"></i>
+            <i class="icon-list menu-icon"></i>
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="index.html">
+            <a class="nav-link" href="<?php echo base_url();?>admin/vendors">
             <span class="menu-title">Vendors</span>
-            <i class="icon-screen-desktop menu-icon"></i>
+            <i class="icon-list menu-icon"></i>
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="index.html">
+            <a class="nav-link" href="<?php echo base_url();?>admin/customers">
             <span class="menu-title">Customers</span>
-            <i class="icon-screen-desktop menu-icon"></i>
+            <i class="icon-list menu-icon"></i>
             </a>
         </li>
         </ul>
