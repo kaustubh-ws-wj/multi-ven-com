@@ -154,19 +154,19 @@
         <li class="nav-item">
             <a class="nav-link" href="<?php echo base_url();?>admin/product">
             <span class="menu-title">Products</span>
-            <i class="icon-list menu-icon"></i>
+            <i class="icon-handbag menu-icon"></i>
             </a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="<?php echo base_url();?>admin/vendors">
             <span class="menu-title">Vendors</span>
-            <i class="icon-list menu-icon"></i>
+            <i class="icon-user-follow menu-icon"></i>
             </a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="<?php echo base_url();?>admin/customers">
             <span class="menu-title">Customers</span>
-            <i class="icon-list menu-icon"></i>
+            <i class="icon-people menu-icon"></i>
             </a>
         </li>
         </ul>
