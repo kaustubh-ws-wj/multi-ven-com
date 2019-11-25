@@ -92,7 +92,7 @@ class Vendor extends MY_Controller {
             $data['name'] = "vendor/edit_product";
             $this->user_layout($data);
         } else if ($para1 == 'view') {
-            /* $data['product_data'] = $this->db->get_where('product', array(
+           /*  $data['product_data'] = $this->db->get_where('product', array(
                 'product_id' => $para2
             ))->result_array(); */
             $data['template'] = "vendor/view_product";
