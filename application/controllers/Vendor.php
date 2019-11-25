@@ -92,10 +92,12 @@ class Vendor extends MY_Controller {
             $data['name'] = "vendor/edit_product";
             $this->user_layout($data);
         } else if ($para1 == 'view') {
-            $page_data['product_data'] = $this->db->get_where('product', array(
+            /* $data['product_data'] = $this->db->get_where('product', array(
                 'product_id' => $para2
-            ))->result_array();
-            $this->load->view('back/vendor/product_view', $page_data);
+            ))->result_array(); */
+            $data['template'] = "vendor/view_product";
+            $data['name'] = "vendor/view_product";
+            $this->user_layout($data);
         } else if ($para1 == 'delete') {
             $this->Services_model->file_dlt('product', $para2, '.jpg', 'multi');
             $this->db->where('id', $para2);
