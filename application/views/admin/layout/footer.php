@@ -37,3 +37,31 @@
     <!-- Custom js for this page -->
     <!-- <script src="<?php echo ADMINASSETS; ?>js/dashboard.js"></script> -->
     <!-- End custom js for this page -->
+    <script>
+	<?php 
+		if(isset($_SESSION['error'])){
+	?>
+			
+      $.toast({
+          heading: 'Danger',
+          text: '<?php echo $this->session->flashdata('error');?>',
+          showHideTransition: 'slide',
+          icon: 'warning',
+          loaderBg: '#57c7d4',
+          position: 'top-right'
+      }); 
+	<?php      
+		}if(isset($_SESSION['success'])){
+	?>
+		 $.toast({
+        heading: 'Success',
+        text: '<?php echo $this->session->flashdata('success');?>',
+        showHideTransition: 'slide',
+        icon: 'success',
+        loaderBg: '#f96868',
+        position: 'top-right'
+    })
+	<?php 
+		}
+	?>
+	</script>

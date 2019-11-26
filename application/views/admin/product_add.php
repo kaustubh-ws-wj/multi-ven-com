@@ -19,9 +19,9 @@
           <div class="form-group">
           <label for="exampleFormControlSelect1">Category</label>
           <select class="form-control form-control-lg" name="category" id="exampleFormControlSelect1">
-            <option>Costume Designer</option>
-            <option>T-Shirts</option>
-            <option>Electronics</option>
+            <option value="1" >Costume Designer</option>
+            <option value="2">T-Shirts</option>
+            <option value="3">Electronics</option>
           </select>
         </div>
         </div>
@@ -29,9 +29,9 @@
           <div class="form-group">
           <label for="exampleFormControlSelect1">Sub Category</label>
           <select class="form-control form-control-lg" name="sub_category" id="exampleFormControlSelect1">
-            <option>Costume Designer</option>
-            <option>T-Shirts</option>
-            <option>Electronics</option>
+            <option value="1">Costume Designer</option>
+            <option value="2">T-Shirts</option>
+            <option value="3">Electronics</option>
           </select>
         </div>
         </div>

@@ -111,6 +111,7 @@ class Admin extends MY_Controller {
             $data['sale_price']         = $this->input->post('sale_price');
             $data['current_stock']      = $this->input->post('current_stock');
             $data['num_of_imgs']        = $num + $num_of_imgs;
+            $data['updated_date']       = time();
             $this->Services_model->file_up("images", "product", $para2, 'multi');
             $this->db->where('id', $para2);
             $this->db->update('product', $data);
