@@ -88,7 +88,7 @@ class Admin extends MY_Controller {
             $data['created_date']       = time();
             $data['num_of_imgs']        = $num_of_imgs;
             $data['current_stock']      = $this->input->post('current_stock');
-            $data['added_by']           = json_encode(array('type'=>'vendor','id'=>$this->session->userdata('vendor_id')));
+            $data['added_by']           = json_encode(array('type'=>'admin','id'=>$this->session->userdata('user_id')));
             
             $this->db->insert('product', $data);
             $id = $this->db->insert_id();
@@ -224,7 +224,7 @@ class Admin extends MY_Controller {
             $this->admin_layout($data);
         } else {
             //$page_data['page_name']   = "product";
-            $this->db->where('added_by',json_encode(array('type'=>'vendor','id'=>$this->session->userdata('vendor_id'))));
+            //$this->db->where('added_by',json_encode(array('type'=>'admin','id'=>$this->session->userdata('vendor_id'))));
             $data['all_product'] = $this->db->get('product')->result_array();
             $data['template'] ="product_list";
             $data['name'] ="product_list";
