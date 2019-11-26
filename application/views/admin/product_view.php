@@ -65,7 +65,6 @@
                             <span class="float-right text-muted"><?php echo $row['sub_category'];?></span>
                           </p>
                         </div>
-                        <button class="btn btn-primary btn-block">Preview</button>
                     </div>
                 </div>
             </div>
