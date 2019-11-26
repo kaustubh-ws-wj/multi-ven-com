@@ -8,7 +8,7 @@
                             <h5>Products</h5>
                         </div>
                         <div>
-                            <button class="btn btn-sm btn-primary">Add Product</button>
+                            <a href="<?php echo base_url();?>admin/product/add" class="btn btn-sm btn-primary">Add Product</a>
                         </div>
                     </div>
                 </div>
@@ -21,17 +21,38 @@
                 <thead>
                     <tr>
                     <th> #</th>
-                    <th>Image</th>
-                    <th>Title</th>
-                    <th>Price</th>
-                    <th>Current Stock</th>
-                    <th>Category</th>
-                    <th>Status</th>
-                    <th>Actions</th>
+                    <th class="text-center">Image</th>
+                    <th class="text-center">Title</th>
+                    <th class="text-center">Price</th>
+                    <th class="text-center">Current Stock</th>
+                    <th class="text-center">Category</th>
+                    <th class="text-center">Status</th>
+                    <th class="text-center">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
-                    
+                    <?php $i=1 ; foreach($all_product as $row){ ?>
+                        <tr>
+                        <td class="text-center"><?php echo $i; ?></td>
+                        <td class="text-center"><img src="<?php echo $this->Services_model->file_view('product',$row['id'],'','','thumb','src','multi','one'); ?>" style="height:100px;width:100px;"></td>
+                        <td class="text-center"><?php echo $row['title'];?></td>
+                        <td class="text-center"><?php echo $row['sale_price']; ?></td>
+                        <td class="text-center"><?php echo $row['current_stock']; ?></td>
+                        <td class="text-center"><?php echo (($row['category'] == 1) ? 'Costume Design': (($row['category'] == 2) ? 'T-Shirt': 'Other')) ; ?></td>
+                        <td class="text-center"><label class="badge badge-success">Active</label></td>
+                        <td class="text-center">
+                            <button class="btn btn-light">
+                                  <i class="icon-eye text-primary"></i>
+                            </button>
+                            <button class="btn btn-light">
+                                  <i class="icon-pencil text-success"></i>
+                            </button>
+                            <button class="btn btn-light">
+                                  <i class="icon-close text-danger"></i>
+                            </button>
+                        </td>
+                        </tr>
+                    <?php $i++; } ?>
                 </tbody>
                 </table>
             </div>
