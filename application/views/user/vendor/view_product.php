@@ -71,7 +71,8 @@
                                 <!-- Simple Lence Thumbnail -->
                                 <div class="simpleLens-thumbnails-container text-center">
                                     <div id="single-product" class="owl-carousel custom-carousel">
-                                            <?php   $i = 1;
+                                            <?php   
+                                                $i = 1;
                                                 $thumb_html = "";
                                                 $thumb_html .= "<ul class=\"nav nav-tabs\" role=\"tablist\">";
                                                 foreach($thumbs as $th => $row2){ 
@@ -84,11 +85,6 @@
                                                 }
                                                 echo $thumb_html; 
                                             ?>
-                                     <ul class="nav nav-tabs" role="tablist">
-                                        <li class=""><a href="#p-view-4" role="tab" data-toggle="tab"><img src="images/single-p/s4.jpg" alt="productd"></a></li>
-                                        <li class="last-li"><a href="#p-view-5" role="tab" data-toggle="tab"><img src="images/single-p/s5.jpg" alt="productd"></a></li>
-                                        <li class="hidden-md hidden-xs hidden-sm"><a href="#p-view-6" role="tab" data-toggle="tab"><img src="images/single-p/s6.jpg" alt="productd"></a></li>
-                                    </ul>
                                     </div>
                                 </div>
                                 <!-- End Simple Lence Thumbnail -->
