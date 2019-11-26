@@ -1,29 +1,27 @@
 <div class="content-wrapper">
 
 <div class="col-8 grid-margin stretch-card " style="margin: 0 auto; width:80%;" >
-<?php foreach($product_data as $row) { ?>
                 <div class="card">
                   <div class="card-body">
                     <h2 class="card-title" style="text-align:center;">EDIT PRODUCT</h2>
                     <br>
-                    <form class="forms-sample" method="post" action="<?php echo base_url();?>admin/product/update/<?php echo $row['id']?>" enctype="multipart/form-data">
+                    <form class="forms-sample">
                       <div class="form-group">
                         <label for="exampleInputName1">Title</label>
-                        <input type="text" class="form-control" id="exampleInputName1" placeholder="" value="<?php echo $row['title'];?>">
+                        <input type="text" class="form-control" id="exampleInputName1" placeholder="">
                       </div>
                       <div class="form-group">
                         <label for="exampleInputText">Description</label>
-                        <textarea class="form-control" id="exampleTextarea1" rows="4" <?php echo $row['description'];?>></textarea>
+                        <textarea class="form-control" id="exampleTextarea1" rows="4"></textarea>
                       </div>
                       <div class="row">
                       <div class="col-md-6">
                       <div class="form-group">
                       <label for="exampleFormControlSelect1">Category</label>
                       <select class="form-control form-control-lg" id="exampleFormControlSelect1">
-                      <option value="">-- Select Category --</option>
-                        <option value="1" <?php echo ($row['category'] == '1')?'selected':'' ?>>Costume Designer</option>
-                        <option value="2" <?php echo ($row['category'] == '2')?'selected':'' ?>>T-Shirts</option>
-                        <option value="3" <?php echo ($row['category'] == '3')?'selected':'' ?>>Electronics</option>
+                        <option>Costume Designer</option>
+                        <option>T-Shirts</option>
+                        <option>Electronics</option>
                       </select>
                     </div>
                     </div>
@@ -31,10 +29,9 @@
                       <div class="form-group">
                       <label for="exampleFormControlSelect1">Sub Category</label>
                       <select class="form-control form-control-lg" id="exampleFormControlSelect1">
-                      <option value="">-- Select Sub-Category --</option>
-                        <option value="1" <?php echo ($row['category'] == '1')?'selected':'' ?>>Costume Designer</option>
-                        <option value="2" <?php echo ($row['category'] == '2')?'selected':'' ?>>T-Shirts</option>
-                        <option value="3" <?php echo ($row['category'] == '3')?'selected':'' ?>>Electronics</option>
+                        <option>Costume Designer</option>
+                        <option>T-Shirts</option>
+                        <option>Electronics</option>
                       </select>
                     </div>
                     </div>
@@ -53,13 +50,13 @@
                       <div class="col-md-6">
                       <div class="form-group">
                         <label for="exampleInputPrice1">Sale Price</label>
-                        <input type="text" class="form-control" id="exampleInputPrice1" placeholder="" value="<?php echo $row['sale_price']; ?>">
+                        <input type="text" class="form-control" id="exampleInputPrice1" placeholder="">
                       </div>
                       </div>
                       <div class="col-md-6">
                       <div class="form-group">
                         <label for="exampleQuantity1">Quantity</label>
-                        <input type="text" class="form-control" id="exampleInputQuantity" placeholder="" value="<?php echo $row['current_stock']; ?>">
+                        <input type="text" class="form-control" id="exampleInputQuantity" placeholder="">
                       </div>
                       </div>
                       </div>
@@ -81,3 +78,4 @@
       $(this).parent().find('.form-control').val($(this).val().replace(/C:\\fakepath\\/i, ''));
     });
   });
+})(jQuery);</script>
