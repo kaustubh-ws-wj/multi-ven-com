@@ -41,15 +41,15 @@
                         <td class="text-center"><?php echo (($row['category'] == 1) ? 'Costume Design': (($row['category'] == 2) ? 'T-Shirt': 'Other')) ; ?></td>
                         <td class="text-center"><label class="badge badge-success">Active</label></td>
                         <td class="text-center">
-                            <button class="btn btn-light">
+                            <a href="<?php echo base_url();?>admin/product/view/<?php echo $row['id']; ?>" class="btn btn-light">
                                   <i class="icon-eye text-primary"></i>
-                            </button>
-                            <button class="btn btn-light">
+                            </a>
+                            <a href="<?php echo base_url();?>admin/product/edit/<?php echo $row['id']; ?>" class="btn btn-light">
                                   <i class="icon-pencil text-success"></i>
-                            </button>
-                            <button class="btn btn-light">
+                            </a>
+                            <a  class="btn btn-light delete_confirm" data-id="<?php echo $row['id']; ?>">
                                   <i class="icon-close text-danger"></i>
-                            </button>
+                            </a>
                         </td>
                         </tr>
                     <?php $i++; } ?>
@@ -63,8 +63,48 @@
 </div>
           
 <script>
-    $('#product-listing').DataTable({
+    var base_url = '<?php echo base_url();?>';
+    var table = $('#product-listing').DataTable({
         "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]]
-        
     });
+
+    $.ajaxPrefilter('script', function(options) { 
+		options.cache = true; 
+	});
+	
+	
+    $('tbody').on('click','a.delete_confirm',function(){ 
+		msg = '<div class="modal-title">Are You Sure To Delete ?</div>';
+        id = $(this).data('id');
+        here = this;
+        
+		bootbox.confirm(msg, function(result) {
+            if (result) { 
+                $.ajax({ 
+                    url: base_url+'/admin/product/delete/'+id,
+                    //cache: false, 
+                    success: function(data) { 
+                        $.toast({
+                            heading: 'Success',
+                            text: 'You Deleted Product Successfully!',
+                            showHideTransition: 'slide',
+                            icon: 'success',
+                            loaderBg: '#f96868',
+                            position: 'top-right'
+                        })
+                        table.row($(here).parents('tr')).remove().draw();
+                    } 
+                }); 
+            }else{ 
+                $.toast({
+                    heading: 'Warning',
+                    text: 'Product Delete Operation Cancled!',
+                    showHideTransition: 'slide',
+                    icon: 'warning',
+                    loaderBg: '#57c7d4',
+                    position: 'top-right'
+                }); 
+            }; 
+		});
+	});
 </script>

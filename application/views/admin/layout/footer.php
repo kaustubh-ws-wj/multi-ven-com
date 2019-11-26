@@ -23,9 +23,9 @@
     <script src="<?php echo ADMINASSETS; ?>vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
     <script src="<?php echo ADMINASSETS; ?>vendors/moment/moment.min.js"></script>
     <script src="<?php echo ADMINASSETS; ?>vendors/daterangepicker/daterangepicker.js"></script>
-    <script src="<?php echo ADMINASSETS; ?>vendors/chartist/chartist.min.js"></script>
+    <!-- <script src="<?php echo ADMINASSETS; ?>vendors/chartist/chartist.min.js"></script> -->
     <script src="<?php echo ADMINASSETS; ?>vendors/progressbar.js/progressbar.min.js"></script>
-    
+    <script src="<?php echo USERASSETS ?>plugins/bootbox/bootbox.min.js"></script>
     <!-- End plugin js for this page -->
     <!-- inject:js -->
     <script src="<?php echo ADMINASSETS; ?>js/off-canvas.js"></script>
@@ -35,5 +35,5 @@
     <script src="<?php echo ADMINASSETS; ?>js/todolist.js"></script>
     <!-- endinject -->
     <!-- Custom js for this page -->
-    <script src="<?php echo ADMINASSETS; ?>js/dashboard.js"></script>
+    <!-- <script src="<?php echo ADMINASSETS; ?>js/dashboard.js"></script> -->
     <!-- End custom js for this page -->

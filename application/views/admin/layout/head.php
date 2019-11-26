@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="<?php echo ADMINASSETS; ?>vendors/css/vendor.bundle.base.css">
     <!-- endinject -->
     <!-- Plugin css for this page -->
+    <link rel="stylesheet" href="<?php echo ADMINASSETS; ?>vendors/jquery-toast-plugin/jquery.toast.min.css">
     <link rel="stylesheet" href="<?php echo ADMINASSETS; ?>vendors/font-awesome/css/font-awesome.min.css" />
     <link rel="stylesheet" href="<?php echo ADMINASSETS; ?>vendors/bootstrap-datepicker/bootstrap-datepicker.min.css">
     <link rel="stylesheet" href="<?php echo ADMINASSETS; ?>vendors/jvectormap/jquery-jvectormap.css">
@@ -27,4 +28,5 @@
 
     <script src="<?php echo ADMINASSETS; ?>vendors/datatables.net/jquery.dataTables.js"></script>
     <script src="<?php echo ADMINASSETS; ?>vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
+    <script src="<?php echo ADMINASSETS; ?>vendors/jquery-toast-plugin/jquery.toast.min.js"></script>
   </head>
