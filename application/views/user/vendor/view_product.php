@@ -29,6 +29,7 @@
                 </div>
             </div>
             <!--end-single-heading-->
+            <?php foreach($product_data as $row){ ?>
             <!--start-signle-page-->
             <div class="single-page-area padding-t">
                 <!-- Single Product details Area -->
@@ -46,14 +47,14 @@
                                                 <div class="tab-pane active" id="p-view-1">
                                                     <div class="simpleLens-big-image-container">
                                                         <a class="simpleLens-lens-image" data-lens-image="images/single-p/b1.jpg">
-                                                            <img src="images/single-p/m1.jpg" class="simpleLens-big-image" alt="product">
+                                                            <img src="<?php echo $this->Services_model->file_view('product',$row['id']); ?>" class="simpleLens-big-image" alt="product">
                                                         </a>
                                                     </div>
                                                 </div>
                                                 <div class="tab-pane" id="p-view-2">
                                                     <div class="simpleLens-big-image-container">
-                                                        <a class="simpleLens-lens-image" data-lens-image="images/single-p/b2.jpg">
-                                                            <img src="images/single-p/m2.jpg" class="simpleLens-big-image" alt="product">
+                                                        <a class="simpleLens-lens-image" data-lens-image="<?php echo $this->Services_model->file_view('product',$row['id'],'105','140','thumb','src','multi','one'); ?>">
+                                                            <img src="<?php echo $this->Services_model->file_view('product',$row['id'],'105','140','thumb','src','multi','one'); ?>" class="simpleLens-big-image" alt="product">
                                                         </a>
                                                     </div>
                                                 </div>
@@ -110,38 +111,41 @@
                                 <div class="col-lg-7 col-md-7 col-sm-6 col-xs-12 single-product-details">
                                     <div class="single-pro">
                                         <div class="product-name">
-                                            <h3>Sample Product</h3>
+                                            <h3><?php echo $row['title'];?></h3>
                                         </div>
                                     </div>
                                     <div class="product-details">
                                         <div class="product-content">
                                             <div class="pro-rating single-p">
-                                                <ul class="single-pro-rating">
+                                                <!--ul class="single-pro-rating">
                                                     <li><i class="fa fa-star"></i></li>
                                                     <li><i class="fa fa-star"></i></li>
                                                     <li><i class="fa fa-star"></i></li>
                                                     <li class="r-grey"><i class="fa fa-star"></i></li>
                                                     <li class="r-grey"><i class="fa fa-star-half-o"></i></li>
-                                                </ul>
-                                                <div class="rating-links">
+                                                </ul-->
+                                                <!--div class="rating-links">
                                                     <a href="#">1 Review(s)</a>
                                                     <span class="separator">|</span>
                                                     <a href="#" class="add-to-review">Add Your Review</a>
                                                 </div>
-                                            </div><br>
+                                            </div--><br>
                                             <div class="pro-price single-p">
-                                                <span class="price-text">Price:</span>
-                                                <span class="normal-price">$250.00</span>
-                                                <span class="old-price"><del>$300.00</del></span>
+                                                <span class="price-text">Sale Price:</span>
+                                                <span class="normal-price">$<?php echo $row['sale_price'];?></span>
                                             </div>
                                         </div>
-                                        <p>Availability: <span class="signle-stock">In stock</span></p>
+                                        <p>Quantity: <span class="signle-stock"></span><?php echo $row['current_stock'];?></p>
+                                        <p><h4>Category:</h4> <span class="signle-stock"></span><?php echo $row['category'];?></p>
+                                        <p><h4>Sub-Category:</h4> <span class="signle-stock"></span><?php echo $row['sub_category'];?></p>
+                                        &nbsp;
                                         <div class="product-reveiw">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis voluptatibus laudantium perferendis veritatis nam tempore vel accusamus natus reiciendis asperiores nisi quod, quaerat quidem dicta officiis repellat, excepturi dolores sed itaque quam? Assumenda eveniet ut voluptates adipisci maxime est aperiam quis soluta fugiat? Debitis totam sed iste laboriosam a.</p>
+                                            <h3>Description:</h3>
+                                            <p><?php echo $row['description'];?></p>
                                         </div>
                                         <div class="clear"></div>
                                         <!--start-size-area-->
-                                        <div class="skill-checklist">
+                                        <!--div class="skill-checklist">
                                             <label for="skillc"><span class="size-cho">Size:</span>
                                             </label>
                                             <br>
@@ -152,10 +156,10 @@
                                                 <option value="">XL</option>
                                                 <option value="">XXL</option>
                                             </select>
-                                        </div>
+                                        </div-->
                                         <!--end-size-area-->
                                         <!--start-color-choice-->
-                                        <div class="color-instock">
+                                        <!--div class="color-instock">
                                             <div class="skill-colors">
                                                 <span class="color-cho">Color</span>
                                                 <ul class="skill-ulli">
@@ -179,9 +183,9 @@
                                                     </li>
                                                 </ul>
                                             </div>
-                                        </div>
+                                        </div-->
                                         <!--end-color-choice-->
-                                        <div class="">
+                                        <!--div class="">
                                             <div class="quick-add-to-cart">
                                                 <form method="post" class="cart">
                                                     <div class="qty-button">
@@ -201,11 +205,11 @@
                                                     </div>
                                                 </form>
                                             </div>
-                                        </div>
+                                        </div-->
                                         <!-- social-markting end -->
                                         <div class="clear"></div>
                                         <div class="single-pro-cart">
-                                            <div class="add-to-link single-p">
+                                            <!--div class="add-to-link single-p">
                                                 <a href="#" title="Wishlist">
                                                     <div><i class="fa fa-heart"></i></div>
                                                 </a>
@@ -215,7 +219,7 @@
                                                 <a href="#" title="Compare">
                                                     <div><i class="fa fa-random"></i></div>
                                                 </a>
-                                            </div>
+                                            </div-->
                                         </div>
                                         <div class="clear"></div>
                                         <div class="social-icon-img">
@@ -231,159 +235,7 @@
                         <!-- End Single details Area -->
             </div>
             <!--End-signle-page-->
-            <!-- Single Description Tab -->
-			<div class="single-product-description">
-				<div class="container">
-					<div class="row">
-						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-							<div class="product-description-tab custom-tab">
-								<!-- tab bar -->
-								<ul class="nav nav-tabs" role="tablist">
-									<li class="active"><a href="#product-des" data-toggle="tab">Product Description</a></li>
-									<li><a href="#product-rev" data-toggle="tab">Reviews</a></li>
-									<li><a href="#product-tag" data-toggle="tab">Product Tags</a></li>
-								</ul>
-								<!-- Tab Content -->
-								<div class="tab-content">
-									<div class="tab-pane active" id="product-des">
-										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fringilla augue nec est tristique auctor. Donec non est at libero vulputate rutrum. Morbi ornare lectus quis justo gravida semper. Nulla tellus mi, vulputate adipiscing cursus eu, suscipit id nulla. Donec a neque libero. Pellentesque aliquet, sem eget laoreet ultrices, ipsum metus feugiat sem, quis fermentum turpis eros eget velit. Donec ac tempus ante. Fusce ultricies massa massa. Fusce aliquam, purus eget sagittis vulputate, sapien libero hendrerit est, sed commodo augue nisi non neque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tempor, lorem et placerat vestibulum, metus nisi posuere nisl, in accumsan elit odio quis mi. Cras neque metus, consequat et blandit et, luctus a nunc. Etiam gravida vehicula tellus, in imperdiet ligula euismod eget. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nam erat mi, rutrum at sollicitudin rhoncus, ultricies posuere erat. Duis convallis, arcu nec aliquam consequat, purus felis vehicula felis, a dapibus enim lorem nec augue. Nunc facilisis sagittis ullamcorper. Proin lectus ipsum, gravida et mattis vulputate, tristique ut lectus. Sed et lorem nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aenean eleifend laoreet congue. Vivamus adipiscing nisl ut dolor dignissim semper. Nulla luctus malesuada tincidunt. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Integer enim purus, posuere at ultricies eu, placerat a felis. Suspendisse aliquet urna pretium eros convallis interdum. Quisque in arcu id dui vulputate mollis eget non arcu. Aenean et nulla purus. Mauris vel tellus non nunc mattis lobortis. </p>
-									</div>
-									<div class="tab-pane" id="product-rev">
-										<div class="row">
-											<div class="col-lg-6 col-md-6 col-sm-5 col-xs-12">
-												<div class="product-rev-left">
-													<p class="product-action">
-														<a href="http://infinitelayout.com/">OurStore</a> <b>Review by</b> <span>OurStore</span>
-													</p>
-													<div class="product-ratting">
-														<table class="">
-															<tr>
-																<td>Quality</td>
-																<td class="quality-single-p">
-                                                                    <ul>
-                                                                        <li><i class="fa fa-star"></i></li>
-                                                                        <li><i class="fa fa-star"></i></li>
-                                                                        <li><i class="fa fa-star"></i></li>
-                                                                        <li class="r-grey"><i class="fa fa-star"></i></li>
-                                                                        <li class="r-grey"><i class="fa fa-star-half-o"></i></li>
-                                                                    </ul>
-																</td>
-															</tr>
-															<tr>
-																<td>Price</td>
-																<td class="quality-single-p">
-                                                                    <ul>
-                                                                        <li><i class="fa fa-star"></i></li>
-                                                                        <li><i class="fa fa-star"></i></li>
-                                                                        <li class="r-grey"><i class="fa fa-star"></i></li>
-                                                                        <li class="r-grey"><i class="fa fa-star"></i></li>
-                                                                        <li class="r-grey"><i class="fa fa-star-half-o"></i></li>
-                                                                    </ul>
-																</td>
-															</tr>
-															<tr>
-																<td>Value</td>
-																<td class="quality-single-p">
-                                                                    <ul>
-                                                                        <li><i class="fa fa-star"></i></li>
-                                                                        <li><i class="fa fa-star"></i></li>
-                                                                        <li><i class="fa fa-star"></i></li>
-                                                                        <li><i class="fa fa-star"></i></li>
-                                                                        <li class="r-grey"><i class="fa fa-star-half-o"></i></li>
-                                                                    </ul>
-																</td>
-															</tr>
-														</table>
-													</div>
-													<p>OurStore<span class="posted">(Posted on 20/07/2017)</span></p>
-												</div>
-											</div>
-											<div class="col-lg-6 col-md-6 col-sm-7 col-xs-12">
-												<div class="product-rev-right">
-													<h3>You're reviewing: Proin lectus ipsum</h3>
-													<h3><b>How do you rate this product? <span>*</span></b></h3>
-													<div class="product-rev-right-table table-responsive">
-														<table>
-															<thead>
-																<tr class="first last">
-																	<th>&nbsp;</th>
-																	<th><span class="nobr">1 star</span></th>
-																	<th><span class="nobr">2 stars</span></th>
-																	<th><span class="nobr">3 stars</span></th>
-																	<th><span class="nobr">4 stars</span></th>
-																	<th><span class="nobr">5 stars</span></th>
-																</tr>
-															</thead>
-															<tbody>
-																<tr>
-																	<th>Quality</th>
-																	<th><input type="radio" class="radio" name="ratings[1]"></th>
-																	<th><input type="radio" class="radio" name="ratings[1]"></th>
-																	<th><input type="radio" class="radio" name="ratings[1]"></th>
-																	<th><input type="radio" class="radio" name="ratings[1]"></th>
-																	<th><input type="radio" class="radio" name="ratings[1]"></th>
-																</tr>
-																<tr>
-																	<th>Price</th>
-																	<th><input type="radio" class="radio" name="ratings[2]"></th>
-																	<th><input type="radio" class="radio" name="ratings[2]"></th>
-																	<th><input type="radio" class="radio" name="ratings[2]"></th>
-																	<th><input type="radio" class="radio" name="ratings[2]"></th>
-																	<th><input type="radio" class="radio" name="ratings[2]"></th>
-																</tr>
-																<tr>
-																	<th>Value</th>
-																	<th><input type="radio" class="radio" name="ratings[3]"></th>
-																	<th><input type="radio" class="radio" name="ratings[3]"></th>
-																	<th><input type="radio" class="radio" name="ratings[3]"></th>
-																	<th><input type="radio" class="radio" name="ratings[3]"></th>
-																	<th><input type="radio" class="radio" name="ratings[3]"></th>
-																</tr>
-															</tbody>
-														</table>
-													</div>
-													<div class="porduct-rev-right-form">
-														<form action="#" class="form-horizontal product-form">
-															<div class="form-goroup">
-																<label>Nickname <sup>*</sup></label>
-																<input type="text" class="form-control" required="required">
-															</div>
-															<div class="form-goroup">
-																<label>Summary of Your Review <sup>*</sup></label>
-																<input type="text" class="form-control" required="required">
-															</div>
-															<div class="form-goroup">
-																<label>Review <sup>*</sup></label>
-																<textarea class="form-control" rows="5" required="required"></textarea>
-															</div>
-															<div class="form-goroup form-group-button">
-																<button class="btn custom-button" value="submit">Submit Review</button>
-															</div>
-														</form>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="tab-pane" id="product-tag">
-										<h2>Other people marked this product with these tags:</h2>
-										<p class="product-action">
-											<a href="http://bootexperts.com/">Laptop </a> <span>(1)</span>
-										</p>
-										<form action="#" class="product-form">
-											<label>Add Your Tags:</label>
-											<input type="text" class="form-control" required="required">
-											<button class="btn custom-button" value="submit">Add Tags</button>
-										</form>
-										<p>Use spaces to separate tags. Use single quotes (') for phrases.</p>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- End Single Description Tab -->
+            <?php }?>
             <!--Start-brand-area-->
 <div class="brands-area brands-account">
     <div class="container">
