@@ -145,6 +145,13 @@ class Admin extends MY_Controller {
             $data['template'] ="product_list";
             $data['name'] ="product_list";
             $this->admin_layout($data);
+        } else if ($para1 == 'add') {
+            // $this->db->order_by('id', 'desc');
+            // $this->db->where('added_by',json_encode(array('type'=>'vendor','id'=>$this->session->userdata('vendor_id'))));
+            // $data['all_product'] = $this->db->get('product')->result_array();
+            $data['template'] ="product_add";
+            $data['name'] ="product_add";
+            $this->admin_layout($data);
         } else if ($para1 == 'list_data') {
             $limit      = $this->input->get('limit');
             $search     = $this->input->get('search');
