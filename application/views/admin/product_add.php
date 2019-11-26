@@ -1,5 +1,6 @@
 <div class="content-wrapper">
-  <div class="col-8 grid-margin stretch-card " style="margin: 0 auto; width:80%;" >
+
+<div class="col-8 grid-margin stretch-card " style="margin: 0 auto; width:80%;" >
     <div class="card">
       <div class="card-body">
         <h2 class="card-title" style="text-align:center;">ADD PRODUCT</h2>
