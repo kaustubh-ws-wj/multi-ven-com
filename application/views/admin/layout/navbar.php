@@ -146,10 +146,16 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="<?php echo base_url();?>admin/category">
+            <a class="nav-link" data-toggle="collapse" href="#category" aria-expanded="false" aria-controls="category">
             <span class="menu-title">Category</span>
             <i class="icon-list menu-icon"></i>
             </a>
+            <div class="collapse" id="category">
+                <ul class="nav flex-column sub-menu">
+                  <li class="nav-item"> <a class="nav-link" href="<?php echo base_url();?>admin/category">Category</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="<?php echo base_url();?>admin/category">Sub Category</a></li>
+                </ul>
+              </div>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="<?php echo base_url();?>admin/product">

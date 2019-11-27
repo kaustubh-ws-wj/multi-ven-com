@@ -128,9 +128,9 @@ class Admin extends MY_Controller {
             $data['name'] ="product_edit";
             $this->admin_layout($data);
         } else if ($para1 == 'view') {
-           /*  $data['product_data'] = $this->db->get_where('product', array(
-                'product_id' => $para2
-            ))->result_array(); */
+           $data['product_data'] = $this->db->get_where('product', array(
+                'id' => $para2
+            ))->result_array(); 
             $data['template'] ="product_view";
             $data['name'] ="product_view";
             $this->admin_layout($data);
@@ -271,6 +271,8 @@ class Admin extends MY_Controller {
             $data['name'] ="product_list";
             $this->admin_layout($data);
         }
+
+        
     }
 
 

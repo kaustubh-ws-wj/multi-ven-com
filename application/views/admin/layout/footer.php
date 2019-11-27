@@ -23,9 +23,12 @@
     <script src="<?php echo ADMINASSETS; ?>vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
     <script src="<?php echo ADMINASSETS; ?>vendors/moment/moment.min.js"></script>
     <script src="<?php echo ADMINASSETS; ?>vendors/daterangepicker/daterangepicker.js"></script>
+    <script src="<?= ADMINASSETS ?>vendors/owl-carousel-2/owl.carousel.min.js"></script>
+    <script src="<?= ADMINASSETS ?>js/owl-carousel.js"></script>
     <!-- <script src="<?php echo ADMINASSETS; ?>vendors/chartist/chartist.min.js"></script> -->
     <script src="<?php echo ADMINASSETS; ?>vendors/progressbar.js/progressbar.min.js"></script>
     <script src="<?php echo USERASSETS ?>plugins/bootbox/bootbox.min.js"></script>
+   
     <!-- End plugin js for this page -->
     <!-- inject:js -->
     <script src="<?php echo ADMINASSETS; ?>js/off-canvas.js"></script>

@@ -16,6 +16,10 @@
     <link rel="stylesheet" href="<?php echo ADMINASSETS; ?>vendors/daterangepicker/daterangepicker.css">
     <link rel="stylesheet" href="<?php echo ADMINASSETS; ?>vendors/chartist/chartist.min.css">
     <link rel="stylesheet" href="<?php echo ADMINASSETS; ?>vendors/datatables.net-bs4/dataTables.bootstrap4.css">
+
+
+    <link rel="stylesheet" href="<?= ADMINASSETS ?>vendors/owl-carousel-2/owl.carousel.min.css">
+    <link rel="stylesheet" href="<?= ADMINASSETS ?>vendors/owl-carousel-2/owl.theme.default.min.css">
     <!-- End plugin css for this page -->
     <!-- inject:css -->
     <!-- endinject -->
