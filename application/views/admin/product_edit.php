@@ -40,7 +40,7 @@
       </div>
         <div class="form-group">
           <label>Image Upload</label>
-          <input type="file" multiple name="images" class="file-upload-default">
+          <input type="file" multiple name="images[]" class="file-upload-default">
           <div class="input-group col-xs-12">
             <input type="text" class="form-control file-upload-info" disabled="" placeholder="">
             <span class="input-group-append">
@@ -109,8 +109,19 @@
         </div>
         </div>
         </div>
+        <div class="row">
+            <div class="col-md-6">
+            <div class="form-group">
+              <label>Status</label>
+              <select class="form-control form-control-lg" name="status" id="exampleFormControlSelect1">
+                <option value="Active" <?php echo ($row['status'] == 'Active')?'selected':'' ?>>Active</option>
+                <option value="Deactive" <?php echo ($row['status'] == 'Deactive')?'selected':'' ?>>Deactive</option>
+              </select>
+            </div>
+            </div>
+          </div>
         <button type="submit" class="btn btn-primary mr-2">Update</button>
-        <button class="btn btn-light">Cancel</button>
+        <a href="<?php echo base_url();?>admin/product" class="btn btn-light">Cancel</a>
       </form>
     </div>
   </div>

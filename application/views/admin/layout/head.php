@@ -25,7 +25,10 @@
     <link rel="shortcut icon" href="<?php echo ADMINASSETS; ?>images/favicon.png" />
     <!-- plugins:js -->
     <script src="<?php echo ADMINASSETS; ?>vendors/js/vendor.bundle.base.js"></script>
-
+    <script>
+      var site_url = '<?php echo base_url();?>';
+      var base_url = '<?php echo base_url();?>';
+    </script>
     <script src="<?php echo ADMINASSETS; ?>vendors/datatables.net/jquery.dataTables.js"></script>
     <script src="<?php echo ADMINASSETS; ?>vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
     <script src="<?php echo ADMINASSETS; ?>vendors/jquery-toast-plugin/jquery.toast.min.js"></script>

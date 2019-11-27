@@ -44,7 +44,6 @@
               <span class="input-group-append">
                 <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
               </span>
-             
             </div>
           </div>
           <div class="row">
@@ -53,21 +52,32 @@
             </div>
           </div>
           <div class="row">
-          <div class="col-md-6">
-          <div class="form-group">
-            <label for="exampleInputPrice1">Sale Price</label>
-            <input type="text" class="form-control" name="sale_price" id="exampleInputPrice1" placeholder="Sale Price">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="exampleInputPrice1">Sale Price</label>
+                <input type="text" class="form-control" name="sale_price" id="exampleInputPrice1" placeholder="Sale Price">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="exampleQuantity1">Quantity</label>
+                <input type="text" class="form-control" name="current_stock" id="exampleInputQuantity" placeholder="Current Stock">
+              </div>
+            </div>
           </div>
-          </div>
-          <div class="col-md-6">
-          <div class="form-group">
-            <label for="exampleQuantity1">Quantity</label>
-            <input type="text" class="form-control" name="current_stock" id="exampleInputQuantity" placeholder="Current Stock">
-          </div>
-          </div>
+          <div class="row">
+            <div class="col-md-6">
+            <div class="form-group">
+              <label>Status</label>
+              <select class="form-control form-control-lg" name="status" id="exampleFormControlSelect1">
+                <option value="Active">Active</option>
+                <option value="Deactive">Deactive</option>
+              </select>
+            </div>
+            </div>
           </div>
           <button type="submit" class="btn btn-primary mr-2">Submit</button>
-          <button class="btn btn-light">Cancel</button>
+          <a href="<?php echo base_url();?>admin/product" class="btn btn-light">Cancel</a>
         </form>
       </div>
     </div>

@@ -33,6 +33,7 @@
     <script src="<?php echo ADMINASSETS; ?>js/misc.js"></script>
     <script src="<?php echo ADMINASSETS; ?>js/settings.js"></script>
     <script src="<?php echo ADMINASSETS; ?>js/todolist.js"></script>
+    <script src="<?php echo ADMINASSETS; ?>js/custom.js"></script>
     <!-- endinject -->
     <!-- Custom js for this page -->
     <!-- <script src="<?php echo ADMINASSETS; ?>js/dashboard.js"></script> -->

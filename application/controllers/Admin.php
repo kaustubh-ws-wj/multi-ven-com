@@ -89,7 +89,7 @@ class Admin extends MY_Controller {
             $data['num_of_imgs']        = $num_of_imgs;
             $data['current_stock']      = $this->input->post('current_stock');
             $data['added_by']           = json_encode(array('type'=>'admin','id'=>$this->session->userdata('user_id')));
-            
+            $data['status']             = $this->input->post('status');
             $this->db->insert('product', $data);
             $id = $this->db->insert_id();
             $this->Services_model->file_up("images", "product", $id, 'multi');
@@ -112,6 +112,7 @@ class Admin extends MY_Controller {
             $data['current_stock']      = $this->input->post('current_stock');
             $data['num_of_imgs']        = $num + $num_of_imgs;
             $data['updated_date']       = time();
+            $data['status']             = $this->input->post('status');
             $this->Services_model->file_up("images", "product", $para2, 'multi');
             $this->db->where('id', $para2);
             $this->db->update('product', $data);
@@ -140,12 +141,22 @@ class Admin extends MY_Controller {
             $this->session->set_flashdata('success', 'Product Deleted Successfully !');
             redirect('admin/product');
         } else if ($para1 == 'list') {
-            $this->db->order_by('id', 'desc');
-            $this->db->where('added_by',json_encode(array('type'=>'vendor','id'=>$this->session->userdata('vendor_id'))));
-            $data['all_product'] = $this->db->get('product')->result_array();
-            $data['template'] ="product_list";
-            $data['name'] ="product_list";
-            $this->admin_layout($data);
+
+            $action =  "<a href=\"".base_url()."admin/product/view/$1\" class=\"btn btn-light\">
+            <i class=\"icon-eye text-primary\"></i>
+            </a>
+            <a href=\"".base_url()."admin/product/edit/$1\" class=\"btn btn-light\">
+            <i class=\"icon-pencil text-success\"></i>
+            </a>
+            <a href=\"".base_url()."admin/product/delete/$1\" class=\"btn btn-light delete_confirm\" >
+            <i class=\"icon-close text-danger\"></i>
+            </a>";
+            $this->datatables
+                    ->select("id,num_of_imgs,title,sale_price,current_stock,category,status")
+                    ->from('product');
+            $this->datatables->add_column("Actions", $action, "id");
+            echo $this->datatables->generate();
+            
         } else if ($para1 == 'add') {
             // $this->db->order_by('id', 'desc');
             // $this->db->where('added_by',json_encode(array('type'=>'vendor','id'=>$this->session->userdata('vendor_id'))));
@@ -219,14 +230,43 @@ class Admin extends MY_Controller {
             $a = explode('_', $para2);
             $this->Services_model->file_dlt('product', $a[0], '.jpg', 'multi', $a[1]);
             //recache();
-        } else if ($para1 == 'add') {
+        } else if ($para1 == 'set_status'){
+            $key =      $_POST['key'];
+            $id  =      $_POST['id'];
+            $table =    $_POST['tab'];
+            $r = $this->site_model->setStatus($key, $id, $table);
+            if ($r) {
+                echo json_encode(array('status' => 1));
+            } else {
+                echo json_encode(array('status' => 0));
+            }
+        } else if ($para1 == 'bulk_delete'){
+            $key = $_POST['key'];
+            $val = $_POST['val'];
+            $table = $_POST['tab'];
+            $r = $this->site_model->bulkDelete($key, $val, $table);
+            if ($r) {
+                echo json_encode(array('status' => 1));
+            } else {
+                echo json_encode(array('status' => 0));
+            }
+        } else if ($para1 == 'get_th_img'){
+            $id  =      $_POST['id'];
+            $table =    $_POST['tab'];
+            $r = $this->Services_model->file_view('product',$id,'','','thumb','src','multi','one');
+            if ($r) {
+                echo json_encode(array('status' => 1,'img'=>$r));
+            } else {
+                echo json_encode(array('status' => 0));
+            }
+        }else if ($para1 == 'add') {
             $data['template'] ="product_add";
             $data['name'] ="product_add";
             $this->admin_layout($data);
         } else {
             //$page_data['page_name']   = "product";
             //$this->db->where('added_by',json_encode(array('type'=>'admin','id'=>$this->session->userdata('vendor_id'))));
-            $data['all_product'] = $this->db->get('product')->result_array();
+            //$data['all_product'] = $this->db->get('product')->result_array();
             $data['template'] ="product_list";
             $data['name'] ="product_list";
             $this->admin_layout($data);
@@ -283,6 +323,25 @@ class Admin extends MY_Controller {
             $this->admin_layout($data);
         }
     }
+
+    public function getProductdata() {
+        $action =  "<a href=\"".base_url()."admin/product/view/$1\" class=\"btn btn-light\">
+                    <i class=\"icon-eye text-primary\"></i>
+                    </a>
+                    <a href=\"".base_url()."admin/product/edit/$1\" class=\"btn btn-light\">
+                    <i class=\"icon-pencil text-success\"></i>
+                    </a>
+                    <a  class=\"btn btn-light delete_confirm\" data-id=\"".$row['id']."\">
+                    <i class=\"icon-close text-danger\"></i>
+                    </a>";
+        $this->datatables
+                ->select("id,title,description,sale_price,current_stock,status")
+                ->from('product');
+        $this->datatables->add_column("Actions", $action, "id");
+        echo $this->datatables->generate();
+        
+    }
+
 
 }
 

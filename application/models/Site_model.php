@@ -81,10 +81,6 @@ class Site_model extends MY_Model {
 
     public function setStatus($key, $id, $table) {
         $status1 = $this->db->select('status')->from($table)->where($key, $id)->get()->row()->status;
-//        echo '<pre>';
-//        print_r($status1);
-//        echo '</pre>';
-//        die();
         $status = ($status1 == 'Active') ? 'Deactive' : 'Active';
         $r = $this->db->update($table, array('status' => $status), array($key => $id));
         return $r;
