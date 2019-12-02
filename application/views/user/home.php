@@ -120,6 +120,14 @@
 						<div role="tabpanel" class="tab-pane active" id="home">
 							<div class="row">
 								<div class="featured-carousel indicator">
+
+							
+
+								<?php foreach($prod_data as $value) { 
+
+									
+
+									?>
 									<!-- Start-single-product -->
 									<div class="col-lg-3">
 										<div class="single-product">
@@ -127,7 +135,7 @@
 										<div class="new">new</div>
 										<div class="sale-border"></div>
 											<div class="product-img-wrap">
-												<a class="product-img" href="#"> <img src="<?php echo USERASSETS ?>images/product/1.jpg" alt="product-image" /></a>
+												<a class="product-img" href="#"> <img src="<?php echo $this->Services_model->file_view('product',$value['id'],'','','no','src','multi','one'); ?>" alt="product-image" /></a>
 												<div class="add-to-link">
 													<a href="#">
 														<div><i class="fa fa-heart"></i><span>Add to Wishlist</span></div>
@@ -147,7 +155,7 @@
 											</div>
 											<div class="product-info text-center">
 												<div class="product-content">
-													<a href="#"><h3 class="pro-name">Sample Product</h3></a>
+													<a href="#"><h3 class="pro-name"><?php echo $value['title']; ?></h3></a>
 													<div class="pro-rating">
 														<ul>
 															<li><i class="fa fa-star"></i></li>
@@ -159,16 +167,17 @@
 													</div>
 													<div class="pro-price">
 														<span class="price-text">Price:</span>
-														<span class="normal-price">$100.00</span>
-														<span class="old-price"><del>$120.00</del></span>
+														<span class="normal-price">$<?php echo $value['sale_price']; ?></span>
+														<span class="old-price"><del>$<?php echo $value['sale_price']; ?></del></span>
 													</div>
 												</div>
 											</div>
 										</div>
 									</div>
+									<?php }?>
 									<!-- End-single-product -->
 									<!-- Start-single-product -->
-									<div class="col-lg-3">
+									<!-- <div class="col-lg-3">
 										<div class="single-product">
 											<div class="product-img-wrap">
 												<a class="product-img" href="#"> <img src="<?php echo USERASSETS ?>images/product/9.jpg" alt="product-image" /></a>
@@ -211,10 +220,10 @@
 												<div data-countdown="2019/06/01"></div>
 											</div>
 										</div>
-									</div>
+									</div> -->
 									<!-- End-single-product -->
 									<!-- Start-single-product -->
-									<div class="col-lg-3">
+									<!-- <div class="col-lg-3">
 										<div class="single-product sold-out">
 										<div class="new">Sale</div>
 											<div class="product-img-wrap">
@@ -254,10 +263,10 @@
 												</div>
 											</div>
 										</div>
-									</div>
+									</div> -->
 									<!-- End-single-product -->
 									<!-- Start-single-product -->
-									<div class="col-lg-3">
+									<!-- <div class="col-lg-3">
 										<div class="single-product">
 										<div class="sale">sale</div>
 										<div class="new">new</div>
@@ -301,10 +310,10 @@
 												</div>
 											</div>
 										</div>
-									</div>
+									</div> -->
 									<!-- End-single-product -->
 									<!-- Start-single-product -->
-									<div class="col-lg-3">
+									<!-- <div class="col-lg-3">
 										<div class="single-product">
 											<div class="product-img-wrap">
 												<a class="product-img" href="#"> <img src="<?php echo USERASSETS ?>images/product/6.jpg" alt="product-image" /></a>
@@ -345,10 +354,10 @@
 												</div>
 											</div>
 										</div>
-									</div>
+									</div> -->
 									<!-- End-single-product -->
 									<!-- Start-single-product -->
-									<div class="col-lg-3">
+									<!-- <div class="col-lg-3">
 										<div class="single-product">
 										<div class="new">Sale</div>
 											<div class="product-img-wrap">
@@ -390,7 +399,7 @@
 												</div>
 											</div>
 										</div>
-									</div>
+									</div> -->
 									<!-- End-single-product -->
 								</div>
 							</div>
@@ -1322,6 +1331,12 @@
 				<!-- section-heading end -->
 				<div class="row">
 					<div class="newarrival-carousel indicator">
+					
+				<?php foreach($prod_data as $value) {  
+					// $mains = $this->Services_model->file_view('product',18,'105','140','no','src','multi','one');
+
+						// $thumbs = $this->Services_model->file_view('product',$row['id'],'','','thumb','src','multi','all');
+					?>
 						<!-- Start-single-product -->
 						<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
 							<div class="single-product">
@@ -1329,7 +1344,7 @@
 							<div class="new">new</div>
 							<div class="sale-border"></div>
 								<div class="product-img-wrap">
-									<a class="product-img" href="#"> <img src="<?php echo USERASSETS ?>images/product/3.jpg" alt="product-image" /></a>
+									<a class="product-img" href="#"> <img src="<?php echo  $this->Services_model->file_view('product',$value['id'],'','','no','src','multi','one'); ?>" alt="product-image" /></a>
 									<div class="add-to-link">
 										<a href="#">
 											<div><i class="fa fa-heart"></i><span>Add to Wishlist</span></div>
@@ -1349,7 +1364,7 @@
 								</div>
 								<div class="product-info text-center">
 									<div class="product-content">
-										<a href="#"><h3 class="pro-name">Sample Product</h3></a>
+										<a href="#"><h3 class="pro-name"><?php echo $value['title']; ?></h3></a>
 										<div class="pro-rating">
 											<ul>
 												<li><i class="fa fa-star"></i></li>
@@ -1361,16 +1376,17 @@
 										</div>
 										<div class="pro-price">
 											<span class="price-text">Price:</span>
-											<span class="normal-price">$140.00</span>
-											<span class="old-price"><del>$170.00</del></span>
+											<span class="normal-price">$<?php echo $value['sale_price']; ?></span>
+											<span class="old-price"><del>$<?php echo $value['sale_price']; ?></del></span>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
+						<?php }?>
 						<!-- End-single-product -->
 						<!-- Start-single-product -->
-						<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+						<!-- <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
 							<div class="single-product">
 							<div class="new">new</div>
 								<div class="product-img-wrap">
@@ -1412,10 +1428,10 @@
 									</div>
 								</div>
 							</div>
-						</div>
+						</div> -->
 						<!-- End-single-product -->
 						<!-- Start-single-product -->
-						<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+						<!-- <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
 							<div class="single-product">
 							<div class="sale">Sale</div>
 							<div class="new">new</div>
@@ -1459,10 +1475,10 @@
 									</div>
 								</div>
 							</div>
-						</div>
+						</div> -->
 						<!-- End-single-product -->
 						<!-- Start-single-product -->
-						<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+						<!-- <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
 							<div class="single-product">
 							<div class="sale">Sale</div>
 							<div class="sale-border"></div>
@@ -1505,7 +1521,7 @@
 									</div>
 								</div>
 							</div>
-						</div>
+						</div> -->
 						<!-- End-single-product -->
 						<!-- Start-single-product -->
 						<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
@@ -1859,12 +1875,15 @@
 		<div class="row">
 			<div class="featured-carousel indicator">
 				<!-- Start-single-product -->
+				<?php foreach($prod_data as $value) { 
+					//   $thumbs = $this->Services_model->file_view('product',$value['id'],'','','thumb','src','multi','all');
+					?>
 				<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
 					<div class="single-product sold-out">
 					<div class="sale">Sale</div>
 					<div class="sale-border"></div>
 						<div class="product-img-wrap">
-							<a class="product-img" href="#"> <img src="<?php echo USERASSETS ?>images/product/10.jpg" alt="product-image" /></a>
+							<a class="product-img" href="#"> <img src="<?php echo $this->Services_model->file_view('product',$value['id'],'','','no','src','multi','one');?>" alt="product-image" /></a>
 							<div class="add-to-link">
 								<a href="#">
 									<div><i class="fa fa-heart"></i><span>Add to Wishlist</span></div>
@@ -1876,13 +1895,13 @@
 									<div><i class="fa fa-random"></i><span>Add to compare</span></div>
 								</a>
 							</div>
-							<div class="sold-text">
+							<!-- <div class="sold-text">
 								<span>Sold <br> Out</span>
-							</div>
+							</div> -->
 						</div>
 						<div class="product-info text-center">
 							<div class="product-content">
-								<a href="#"><h3 class="pro-name">Sample Product</h3></a>
+								<a href="#"><h3 class="pro-name"><?php echo $value['title']; ?></h3></a>
 								<div class="pro-rating">
 									<ul>
 										<li><i class="fa fa-star"></i></li>
@@ -1894,16 +1913,17 @@
 								</div>
 								<div class="pro-price">
 									<span class="price-text">Price:</span>
-									<span class="normal-price">$200.00</span>
-									<span class="old-price"><del>$220.00</del></span>
+									<span class="normal-price"><?php echo $value['sale_price']; ?></span>
+									<span class="old-price"><del><?php echo $value['sale_price']; ?></del></span>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
+				<?php }?>
 				<!-- End-single-product -->
 				<!-- Start-single-product -->
-				<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+				<!-- <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
 					<div class="single-product">
 					<div class="sale">Sale</div>
 					<div class="new">new</div>
@@ -1947,10 +1967,10 @@
 							</div>
 						</div>
 					</div>
-				</div>
+				</div> -->
 				<!-- End-single-product -->
 				<!-- Start-single-product -->
-				<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+				<!-- <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
 					<div class="single-product">
 					<div class="sale">Sale</div>
 					<div class="sale-border"></div>
@@ -1993,10 +2013,10 @@
 							</div>
 						</div>
 					</div>
-				</div>
+				</div> -->
 				<!-- End-single-product -->
 				<!-- Start-single-product -->
-				<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+				<!-- <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
 					<div class="single-product">
 					<div class="new">new</div>
 						<div class="product-img-wrap">
@@ -2038,10 +2058,10 @@
 							</div>
 						</div>
 					</div>
-				</div>
+				</div> -->
 				<!-- End-single-product -->
 				<!-- Start-single-product -->
-				<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+				<!-- <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
 					<div class="single-product">
 					<div class="sale">Sale</div>
 					<div class="sale-border"></div>
@@ -2084,10 +2104,10 @@
 							</div>
 						</div>
 					</div>
-				</div>
+				</div> -->
 				<!-- End-single-product -->
 				<!-- Start-single-product -->
-				<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+				<!-- <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
 					<div class="single-product">
 					<div class="sale">Sale</div>
 					<div class="new">new</div>
@@ -2131,10 +2151,10 @@
 							</div>
 						</div>
 					</div>
-				</div>
+				</div> -->
 				<!-- End-single-product -->
 				<!-- Start-single-product -->
-				<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+				<!-- <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
 					<div class="single-product">
 					<div class="sale">Sale</div>
 					<div class="sale-border"></div>
@@ -2177,7 +2197,7 @@
 							</div>
 						</div>
 					</div>
-				</div>
+				</div> -->
 				<!-- End-single-product -->
 
 			</div>

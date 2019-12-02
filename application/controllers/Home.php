@@ -12,9 +12,16 @@ class Home extends MY_Controller {
         $this->load->helper(array('url', 'form'));
         $this->load->library('session');   
         $this->load->model('Home_model');
+        $this->load->model('Services_model');
     }
 
     public function index() {
+
+        $this->db->select('*'); 
+        $this->db->from('product');   
+        $data['prod_data'] = $this->db->get()->result_array();
+        // echo "<pre>";
+        // print_r($data['prod_data']);die;
         $data['template'] = "home";
         $data['name'] = "home";
         $this->user_layout($data);

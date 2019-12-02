@@ -82,6 +82,9 @@ class Services_model extends MY_Model {
    // FILE_VIEW
    function file_view($type, $id, $width = '100', $height = '100', $thumb = 'no', $src = 'no', $multi = '', $multi_num = '', $ext = '.jpg')
    {
+
+
+    // echo "Hii";die;
        if ($multi == '') {
            if (file_exists('uploads/' . $type . '_image/' . $type . '_' . $id . $ext)) {
                if ($thumb == 'no') {
@@ -142,6 +145,8 @@ class Services_model extends MY_Model {
                }
            } else {
                if ($multi_num == 'one') {
+
+                // echo"hi";die;
                    return base_url() . 'uploads/'. $type.'_image/default.jpg';
                } else if ($multi_num == 'all') {
                    return array(base_url() . 'uploads/'. $type.'_image/default.jpg');

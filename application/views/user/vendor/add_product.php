@@ -77,9 +77,9 @@
                                             <label>Category</label>
                                             <select class="form-control" name="category" id="category">
                                             <option value="">-- Select Category --</option>
-                                            <option value="1">Costume Designer</option>
-                                            <option value="2">T-shirts</option>
-                                            <option value="3">Electronics</option>
+                                            <?php foreach($cat_data as $value){?>
+            <option value="<?php echo $value->id; ?>"><?php echo $value->category_name; ?></option>
+            <?php }?>
                                             </select>
                                             <span id="err_cust_type" style="color:red;"></span>
                                         </div>

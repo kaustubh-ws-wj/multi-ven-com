@@ -11,7 +11,7 @@
         </button>
     </div>
     <div class="navbar-menu-wrapper d-flex align-items-center">
-        <h5 class="mb-0 font-weight-medium d-none d-lg-flex">Welcome stellar dashboard!</h5>
+        <h5 class="mb-0 font-weight-medium d-none d-lg-flex">Welcome to Admin dashboard!</h5>
         <ul class="navbar-nav navbar-nav-right">
         <form class="search-form d-none d-md-block" action="#">
             <i class="icon-magnifier"></i>
@@ -145,7 +145,7 @@
             <i class="icon-screen-desktop menu-icon"></i>
             </a>
         </li>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#category" aria-expanded="false" aria-controls="category">
             <span class="menu-title">Category</span>
             <i class="icon-list menu-icon"></i>
@@ -153,9 +153,15 @@
             <div class="collapse" id="category">
                 <ul class="nav flex-column sub-menu">
                   <li class="nav-item"> <a class="nav-link" href="<?php echo base_url();?>admin/category">Category</a></li>
-                  <li class="nav-item"> <a class="nav-link" href="<?php echo base_url();?>admin/category">Sub Category</a></li>
                 </ul>
               </div>
+        </li> -->
+        
+        <li class="nav-item">
+            <a class="nav-link" href="<?php echo base_url();?>admin/category">
+            <span class="menu-title">Category</span>
+            <i class="icon-list menu-icon"></i>
+            </a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="<?php echo base_url();?>admin/product">
