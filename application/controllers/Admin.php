@@ -309,7 +309,7 @@ class Admin extends MY_Controller {
             }
         } else if ($para1 == 'get_th_img'){
             $id  =      $_POST['id'];
-            $table =    $_POST['tab'];
+            //$table =    $_POST['tab'];
             $r = $this->Services_model->file_view('product',$id,'','','thumb','src','multi','one');
             if ($r) {
                 echo json_encode(array('status' => 1,'img'=>$r));

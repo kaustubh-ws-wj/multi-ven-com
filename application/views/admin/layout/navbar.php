@@ -120,7 +120,7 @@
     <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav">
         <li class="nav-item navbar-brand-mini-wrapper">
-            <a class="nav-link navbar-brand brand-logo-mini" href="index.html"><img src="http://www.bootstrapdash.com/demo/stellar-admin/jquery/template/assets/images/logo-mini.svg" alt="logo" /></a>
+            <a class="nav-link navbar-brand brand-logo-mini" href="<?php echo base_url();?>admin"><img src="http://www.bootstrapdash.com/demo/stellar-admin/jquery/template/assets/images/logo-mini.svg" alt="logo" /></a>
         </li>
         <li class="nav-item nav-profile">
             <a href="#" class="nav-link">
@@ -140,7 +140,7 @@
         </li>
        
         <li class="nav-item">
-            <a class="nav-link" href="index.html">
+            <a class="nav-link" href="<?php echo base_url();?>admin">
             <span class="menu-title">Dashboard</span>
             <i class="icon-screen-desktop menu-icon"></i>
             </a>

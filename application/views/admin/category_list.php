@@ -1,6 +1,9 @@
   <div class="content-wrapper">
     <div class="card">
       <div class="card-body">
+        <form id="xform" onsubmit="return bulkDelete('category')">
+        <input type="hidden" name="key" value="id"/>
+        <input type="hidden" name="tab" value="product"/>
         <div class="row grid-margin">
           <div class="col-12">
             <div class="d-flex justify-content-between" style="padding:10px;">
@@ -20,28 +23,29 @@
             </div>
           </div>
         </div>
-      <div class="row">
-        <div class="col-12">
-          <div class="table-responsive">
-            <table id="category-listing" class="dataTable table table-bordered table-hover">
-              <thead>
-                <tr>
-                  <th style="min-width:30px; width: 30px; text-align: center;">
-                    <input class="select_all" type="checkbox" name="select_all" value="1"/>
-                  </th>
-                  <th>Category Name</th>
-                  <th>Description</th>
-                  <th>Status</th>
-                  <th>Actions</th>
-                </tr>
-              </thead>
-              <tbody>
-              </tbody>
-            </table>
+        <div class="row">
+          <div class="col-12">
+            <div class="table-responsive">
+              <table id="category-listing" class="dataTable table table-bordered table-hover">
+                <thead>
+                  <tr>
+                    <th style="min-width:30px; width: 30px; text-align: center;">
+                      <input class="select_all" type="checkbox" name="select_all" value="1"/>
+                    </th>
+                    <th>Category Name</th>
+                    <th>Description</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
-      </div>
     </div>
+    </form>
   </div>
 </div>
 <script>
@@ -60,10 +64,9 @@
     nRow.className = "";
     return nRow;
     },
-    // "aoColumns": [{"bSortable": false, "mRender": checkbox}, {'mRender': function (nRow, aData, iDisplayIndex) },{'mRender': null},{'mRender': null},{'mRender': null},{'mRender': null}, {'mRender': setStatus}, {"bSortable": false}],
-    "fnCreatedRow": function (nRow, aData, iDataIndex) {
-      $('td:eq(2) > label', nRow).attr('onclick', "changeStatus('id'," + aData[0] + ",'category')");
-      $('td:eq(1) > img', nRow).attr('onload', "setProdImg('"+aData[0]+"','category')");
+     "aoColumns": [{"bSortable": false, "mRender": checkbox}, {'mRender': null },{'mRender': null}, {'mRender': setStatus}, {"bSortable": false}],
+      "fnCreatedRow": function (nRow, aData, iDataIndex) {
+      $('td:eq(3) > label', nRow).attr('onclick', "changeStatus('id'," + aData[0] + ",'category')");
       },
       "fnFooterCallback": function (nRow, aaData, iStart, iEnd, aiDisplay) {
       }

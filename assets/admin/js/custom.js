@@ -410,26 +410,29 @@ function getCat(x, type, row) {
  */
 function SetImage(x) {
 
+    
     return "<img src='" + site_url + "assets/admin/images/product/" + x + "' class='img-responsive'/>";
 
 }
-function setProdImg(i,t){
-    img_pram = {id: i,tab: t};
-    $.ajax({
-        url: site_url + "admin/"+t+"/get_th_img",
+ setProdImg = function(x){
+    var img_pram = {'id': x};
+    var req = $.ajax({
+        url: site_url + "admin/product/get_th_img",
         data: $.param(img_pram),
         type: 'POST',
         dataType: 'json',
+        async: false,
         success: function (data) {
-            if (data.status == 1) {
-                alert(data.img);
-               return "<img src='"+data.img+"' style='width:100px;height:100px;' class='img-responsive'/>"
-            } else {
-                alert("error");
+            if (data.status === 1) {
+                link = data.img;
             }
         }
     });
+    return req.responseJSON.img;
 }
+
+
+
 function SetImagejson(x) {
 
     var arr = [];
