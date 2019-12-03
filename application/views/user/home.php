@@ -120,14 +120,7 @@
 						<div role="tabpanel" class="tab-pane active" id="home">
 							<div class="row">
 								<div class="featured-carousel indicator">
-
-							
-
-								<?php foreach($prod_data as $value) { 
-
-									
-
-									?>
+									<?php foreach($prod_data as $row){?>
 									<!-- Start-single-product -->
 									<div class="col-lg-3">
 										<div class="single-product">
@@ -135,7 +128,7 @@
 										<div class="new">new</div>
 										<div class="sale-border"></div>
 											<div class="product-img-wrap">
-												<a class="product-img" href="#"> <img src="<?php echo $this->Services_model->file_view('product',$value['id'],'','','no','src','multi','one'); ?>" alt="product-image" /></a>
+												<a class="product-img" href="#"> <img style="width:263px;height:347.92px;" src="<?php echo $this->Services_model->file_view('product',$row['id'],'','','no','src','multi','one');?>" /></a>
 												<div class="add-to-link">
 													<a href="#">
 														<div><i class="fa fa-heart"></i><span>Add to Wishlist</span></div>
@@ -155,7 +148,7 @@
 											</div>
 											<div class="product-info text-center">
 												<div class="product-content">
-													<a href="#"><h3 class="pro-name"><?php echo $value['title']; ?></h3></a>
+													<a href="#"><h3 class="pro-name">Sample Product</h3></a>
 													<div class="pro-rating">
 														<ul>
 															<li><i class="fa fa-star"></i></li>
@@ -167,240 +160,15 @@
 													</div>
 													<div class="pro-price">
 														<span class="price-text">Price:</span>
-														<span class="normal-price">$<?php echo $value['sale_price']; ?></span>
-														<span class="old-price"><del>$<?php echo $value['sale_price']; ?></del></span>
+														<span class="normal-price">$100.00</span>
+														<span class="old-price"><del>$120.00</del></span>
 													</div>
 												</div>
 											</div>
 										</div>
 									</div>
-									<?php }?>
 									<!-- End-single-product -->
-									<!-- Start-single-product -->
-									<!-- <div class="col-lg-3">
-										<div class="single-product">
-											<div class="product-img-wrap">
-												<a class="product-img" href="#"> <img src="<?php echo USERASSETS ?>images/product/9.jpg" alt="product-image" /></a>
-												<div class="add-to-link">
-													<a href="#">
-														<div><i class="fa fa-heart"></i><span>Add to Wishlist</span></div>
-													</a>
-													<a data-toggle="modal" data-target="#productModal" href="#">
-														<div><i class="fa fa-eye"></i><span>Quick view</span></div>
-													</a>
-													<a href="#">
-														<div><i class="fa fa-random"></i><span>Add to compare</span></div>
-													</a>
-												</div>
-												<div class="add-to-cart">
-													<a href="#" title="add to cart">
-														<div><i class="fa fa-shopping-cart"></i><span>Add to cart</span></div>
-													</a>
-												</div>
-											</div>
-											<div class="product-info text-center">
-												<div class="product-content">
-													<a href="#"><h3 class="pro-name">Sample Product</h3></a>
-													<div class="pro-rating">
-														<ul>
-															<li><i class="fa fa-star"></i></li>
-															<li><i class="fa fa-star"></i></li>
-															<li class="r-grey"><i class="fa fa-star"></i></li>
-															<li class="r-grey"><i class="fa fa-star"></i></li>
-															<li class="r-grey"><i class="fa fa-star-half-o"></i></li>
-														</ul>
-													</div>
-													<div class="pro-price">
-														<span class="price-text">Price:</span>
-														<span class="normal-price">$130.00</span>
-													</div>
-												</div>
-											</div>
-											<div class="upcoming-product featured-count">
-												<div data-countdown="2019/06/01"></div>
-											</div>
-										</div>
-									</div> -->
-									<!-- End-single-product -->
-									<!-- Start-single-product -->
-									<!-- <div class="col-lg-3">
-										<div class="single-product sold-out">
-										<div class="new">Sale</div>
-											<div class="product-img-wrap">
-												<a class="product-img" href="#"> <img src="<?php echo USERASSETS ?>images/product/15.jpg" alt="product-image" /></a>
-												<div class="add-to-link">
-													<a href="#">
-														<div><i class="fa fa-heart"></i><span>Add to Wishlist</span></div>
-													</a>
-													<a data-toggle="modal" data-target="#productModal" href="#">
-														<div><i class="fa fa-eye"></i><span>Quick view</span></div>
-													</a>
-													<a href="#">
-														<div><i class="fa fa-random"></i><span>Add to compare</span></div>
-													</a>
-												</div>
-												<div class="sold-text">
-													<span>Sold <br> Out</span>
-												</div>
-											</div>
-											<div class="product-info text-center">
-												<div class="product-content">
-													<a href="#"><h3 class="pro-name">Sample Product</h3></a>
-													<div class="pro-rating">
-														<ul>
-															<li><i class="fa fa-star"></i></li>
-															<li><i class="fa fa-star"></i></li>
-															<li><i class="fa fa-star"></i></li>
-															<li class="r-grey"><i class="fa fa-star"></i></li>
-															<li class="r-grey"><i class="fa fa-star-half-o"></i></li>
-														</ul>
-													</div>
-													<div class="pro-price">
-														<span class="price-text">Price:</span>
-														<span class="normal-price">$150.00</span>
-														<span class="old-price"><del>$170.00</del></span>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div> -->
-									<!-- End-single-product -->
-									<!-- Start-single-product -->
-									<!-- <div class="col-lg-3">
-										<div class="single-product">
-										<div class="sale">sale</div>
-										<div class="new">new</div>
-										<div class="sale-border"></div>
-											<div class="product-img-wrap">
-												<a class="product-img" href="#"> <img src="<?php echo USERASSETS ?>images/product/3.jpg" alt="product-image" /></a>
-												<div class="add-to-link">
-													<a href="#">
-														<div><i class="fa fa-heart"></i><span>Add to Wishlist</span></div>
-													</a>
-													<a data-toggle="modal" data-target="#productModal" href="#">
-														<div><i class="fa fa-eye"></i><span>Quick view</span></div>
-													</a>
-													<a href="#">
-														<div><i class="fa fa-random"></i><span>Add to compare</span></div>
-													</a>
-												</div>
-												<div class="add-to-cart">
-													<a href="#" title="add to cart">
-														<div><i class="fa fa-shopping-cart"></i><span>Add to cart</span></div>
-													</a>
-												</div>
-											</div>
-											<div class="product-info text-center">
-												<div class="product-content">
-													<a href="#"><h3 class="pro-name">Sample Product</h3></a>
-													<div class="pro-rating">
-														<ul>
-															<li><i class="fa fa-star"></i></li>
-															<li><i class="fa fa-star"></i></li>
-															<li><i class="fa fa-star"></i></li>
-															<li><i class="fa fa-star"></i></li>
-															<li class="r-grey"><i class="fa fa-star-half-o"></i></li>
-														</ul>
-													</div>
-													<div class="pro-price">
-														<span class="price-text">Price:</span>
-														<span class="normal-price">$200.00</span>
-														<span class="old-price"><del>$230.00</del></span>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div> -->
-									<!-- End-single-product -->
-									<!-- Start-single-product -->
-									<!-- <div class="col-lg-3">
-										<div class="single-product">
-											<div class="product-img-wrap">
-												<a class="product-img" href="#"> <img src="<?php echo USERASSETS ?>images/product/6.jpg" alt="product-image" /></a>
-												<div class="add-to-link">
-													<a href="#">
-														<div><i class="fa fa-heart"></i><span>Add to Wishlist</span></div>
-													</a>
-													<a data-toggle="modal" data-target="#productModal" href="#">
-														<div><i class="fa fa-eye"></i><span>Quick view</span></div>
-													</a>
-													<a href="#">
-														<div><i class="fa fa-random"></i><span>Add to compare</span></div>
-													</a>
-												</div>
-												<div class="add-to-cart">
-													<a href="#" title="add to cart">
-														<div><i class="fa fa-shopping-cart"></i><span>Add to cart</span></div>
-													</a>
-												</div>
-											</div>
-											<div class="product-info text-center">
-												<div class="product-content">
-													<a href="#"><h3 class="pro-name">Sample Product</h3></a>
-													<div class="pro-rating">
-														<ul>
-															<li><i class="fa fa-star"></i></li>
-															<li><i class="fa fa-star"></i></li>
-															<li><i class="fa fa-star"></i></li>
-															<li class="r-grey"><i class="fa fa-star"></i></li>
-															<li class="r-grey"><i class="fa fa-star-half-o"></i></li>
-														</ul>
-													</div>
-													<div class="pro-price">
-														<span class="price-text">Price:</span>
-														<span class="normal-price">$100.00</span>
-														<span class="old-price"><del>$120.00</del></span>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div> -->
-									<!-- End-single-product -->
-									<!-- Start-single-product -->
-									<!-- <div class="col-lg-3">
-										<div class="single-product">
-										<div class="new">Sale</div>
-											<div class="product-img-wrap">
-												<a class="product-img" href="#"> <img src="<?php echo USERASSETS ?>images/product/11.jpg" alt="product-image" /></a>
-												<div class="add-to-link">
-													<a href="#">
-														<div><i class="fa fa-heart"></i><span>Add to Wishlist</span></div>
-													</a>
-													<a data-toggle="modal" data-target="#productModal" href="#">
-														<div><i class="fa fa-eye"></i><span>Quick view</span></div>
-													</a>
-													<a href="#">
-														<div><i class="fa fa-random"></i><span>Add to compare</span></div>
-													</a>
-												</div>
-												<div class="add-to-cart">
-													<a href="#" title="add to cart">
-														<div><i class="fa fa-shopping-cart"></i><span>Add to cart</span></div>
-													</a>
-												</div>
-											</div>
-											<div class="product-info text-center">
-												<div class="product-content">
-													<a href="#"><h3 class="pro-name">Sample Product</h3></a>
-													<div class="pro-rating">
-														<ul>
-															<li><i class="fa fa-star"></i></li>
-															<li><i class="fa fa-star"></i></li>
-															<li><i class="fa fa-star"></i></li>
-															<li class="r-grey"><i class="fa fa-star"></i></li>
-															<li class="r-grey"><i class="fa fa-star-half-o"></i></li>
-														</ul>
-													</div>
-													<div class="pro-price">
-														<span class="price-text">Price:</span>
-														<span class="normal-price">$100.00</span>
-														<span class="old-price"><del>$120.00</del></span>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div> -->
-									<!-- End-single-product -->
+									<?php } ?>
 								</div>
 							</div>
 						</div>
@@ -414,7 +182,7 @@
 										<div class="single-product sold-out">
 										<div class="new">Sale</div>
 											<div class="product-img-wrap">
-												<a class="product-img" href="#"> <img src="<?php echo USERASSETS ?>images/product/13.jpg" alt="product-image" /></a>
+												<a class="product-img" href="#"> <img src="images/product/13.jpg" alt="product-image" /></a>
 												<div class="add-to-link">
 													<a href="#">
 														<div><i class="fa fa-heart"></i><span>Add to Wishlist</span></div>
@@ -459,7 +227,7 @@
 										<div class="new">new</div>
 										<div class="sale-border"></div>
 											<div class="product-img-wrap">
-												<a class="product-img" href="#"> <img src="<?php echo USERASSETS ?>images/product/2.jpg" alt="product-image" /></a>
+												<a class="product-img" href="#"> <img src="images/product/2.jpg" alt="product-image" /></a>
 												<div class="add-to-link">
 													<a href="#">
 														<div><i class="fa fa-heart"></i><span>Add to Wishlist</span></div>
@@ -503,7 +271,7 @@
 									<div class="col-lg-3">
 										<div class="single-product">
 											<div class="product-img-wrap">
-												<a class="product-img" href="#"> <img src="<?php echo USERASSETS ?>images/product/16.jpg" alt="product-image" /></a>
+												<a class="product-img" href="#"> <img src="images/product/16.jpg" alt="product-image" /></a>
 												<div class="add-to-link">
 													<a href="#">
 														<div><i class="fa fa-heart"></i><span>Add to Wishlist</span></div>
@@ -548,7 +316,7 @@
 										<div class="single-product">
 										<div class="new">new</div>
 											<div class="product-img-wrap">
-												<a class="product-img" href="#"> <img src="<?php echo USERASSETS ?>images/product/10.jpg" alt="product-image" /></a>
+												<a class="product-img" href="#"> <img src="images/product/10.jpg" alt="product-image" /></a>
 												<div class="add-to-link">
 													<a href="#">
 														<div><i class="fa fa-heart"></i><span>Add to Wishlist</span></div>
@@ -592,7 +360,7 @@
 										<div class="single-product">
 										<div class="new">new</div>
 											<div class="product-img-wrap">
-												<a class="product-img" href="#"> <img src="<?php echo USERASSETS ?>images/product/5.jpg" alt="product-image" /></a>
+												<a class="product-img" href="#"> <img src="images/product/5.jpg" alt="product-image" /></a>
 												<div class="add-to-link">
 													<a href="#">
 														<div><i class="fa fa-heart"></i><span>Add to Wishlist</span></div>
@@ -639,7 +407,7 @@
 										<div class="new">new</div>
 										<div class="sale-border"></div>
 											<div class="product-img-wrap">
-												<a class="product-img" href="#"> <img src="<?php echo USERASSETS ?>images/product/4.jpg" alt="product-image" /></a>
+												<a class="product-img" href="#"> <img src="images/product/4.jpg" alt="product-image" /></a>
 												<div class="add-to-link">
 													<a href="#">
 														<div><i class="fa fa-heart"></i><span>Add to Wishlist</span></div>
@@ -693,7 +461,7 @@
 										<div class="sale">Sale</div>
 										<div class="sale-border"></div>
 											<div class="product-img-wrap">
-												<a class="product-img" href="#"> <img src="<?php echo USERASSETS ?>images/product/49.jpg" alt="product-image" /></a>
+												<a class="product-img" href="#"> <img src="images/product/49.jpg" alt="product-image" /></a>
 												<div class="add-to-link">
 													<a href="#">
 														<div><i class="fa fa-heart"></i><span>Add to Wishlist</span></div>
@@ -738,7 +506,7 @@
 										<div class="single-product">
 										<div class="new">Sale</div>
 											<div class="product-img-wrap">
-												<a class="product-img" href="#"> <img src="<?php echo USERASSETS ?>images/product/50.jpg" alt="product-image" /></a>
+												<a class="product-img" href="#"> <img src="images/product/50.jpg" alt="product-image" /></a>
 												<div class="add-to-link">
 													<a href="#">
 														<div><i class="fa fa-heart"></i><span>Add to Wishlist</span></div>
@@ -783,7 +551,7 @@
 										<div class="single-product">
 										<div class="new">new</div>
 											<div class="product-img-wrap">
-												<a class="product-img" href="#"> <img src="<?php echo USERASSETS ?>images/product/53.jpg" alt="product-image" /></a>
+												<a class="product-img" href="#"> <img src="images/product/53.jpg" alt="product-image" /></a>
 												<div class="add-to-link">
 													<a href="#">
 														<div><i class="fa fa-heart"></i><span>Add to Wishlist</span></div>
@@ -827,7 +595,7 @@
 									<div class="col-lg-3">
 										<div class="single-product">
 											<div class="product-img-wrap">
-												<a class="product-img" href="#"> <img src="<?php echo USERASSETS ?>images/product/52.jpg" alt="product-image" /></a>
+												<a class="product-img" href="#"> <img src="images/product/52.jpg" alt="product-image" /></a>
 												<div class="add-to-link">
 													<a href="#">
 														<div><i class="fa fa-heart"></i><span>Add to Wishlist</span></div>
@@ -871,7 +639,7 @@
 									<div class="col-lg-3">
 										<div class="single-product">
 											<div class="product-img-wrap">
-												<a class="product-img" href="#"> <img src="<?php echo USERASSETS ?>images/product/51.jpg" alt="product-image" /></a>
+												<a class="product-img" href="#"> <img src="images/product/51.jpg" alt="product-image" /></a>
 												<div class="add-to-link">
 													<a href="#">
 														<div><i class="fa fa-heart"></i><span>Add to Wishlist</span></div>
@@ -917,7 +685,7 @@
 										<div class="sale">Sale</div>
 										<div class="sale-border"></div>
 											<div class="product-img-wrap">
-												<a class="product-img" href="#"> <img src="<?php echo USERASSETS ?>images/product/49.jpg" alt="product-image" /></a>
+												<a class="product-img" href="#"> <img src="images/product/49.jpg" alt="product-image" /></a>
 												<div class="add-to-link">
 													<a href="#">
 														<div><i class="fa fa-heart"></i><span>Add to Wishlist</span></div>
@@ -972,7 +740,7 @@
 										<div class="new">new</div>
 										<div class="sale-border"></div>
 											<div class="product-img-wrap">
-												<a class="product-img" href="#"> <img src="<?php echo USERASSETS ?>images/product/44.jpg" alt="product-image" /></a>
+												<a class="product-img" href="#"> <img src="images/product/44.jpg" alt="product-image" /></a>
 												<div class="add-to-link">
 													<a href="#">
 														<div><i class="fa fa-heart"></i><span>Add to Wishlist</span></div>
@@ -1017,7 +785,7 @@
 										<div class="single-product">
 										<div class="new">new</div>
 											<div class="product-img-wrap">
-												<a class="product-img" href="#"> <img src="<?php echo USERASSETS ?>images/product/45.jpg" alt="product-image" /></a>
+												<a class="product-img" href="#"> <img src="images/product/45.jpg" alt="product-image" /></a>
 												<div class="add-to-link">
 													<a href="#">
 														<div><i class="fa fa-heart"></i><span>Add to Wishlist</span></div>
@@ -1062,7 +830,7 @@
 										<div class="single-product">
 										<div class="new">sale</div>
 											<div class="product-img-wrap">
-												<a class="product-img" href="#"> <img src="<?php echo USERASSETS ?>images/product/47.jpg" alt="product-image" /></a>
+												<a class="product-img" href="#"> <img src="images/product/47.jpg" alt="product-image" /></a>
 												<div class="add-to-link">
 													<a href="#">
 														<div><i class="fa fa-heart"></i><span>Add to Wishlist</span></div>
@@ -1106,7 +874,7 @@
 									<div class="col-lg-3">
 										<div class="single-product">
 											<div class="product-img-wrap">
-												<a class="product-img" href="#"> <img src="<?php echo USERASSETS ?>images/product/48.jpg" alt="product-image" /></a>
+												<a class="product-img" href="#"> <img src="images/product/48.jpg" alt="product-image" /></a>
 												<div class="add-to-link">
 													<a href="#">
 														<div><i class="fa fa-heart"></i><span>Add to Wishlist</span></div>
@@ -1150,7 +918,7 @@
 									<div class="col-lg-3">
 										<div class="single-product">
 											<div class="product-img-wrap">
-												<a class="product-img" href="#"> <img src="<?php echo USERASSETS ?>images/product/46.jpg" alt="product-image" /></a>
+												<a class="product-img" href="#"> <img src="images/product/46.jpg" alt="product-image" /></a>
 												<div class="add-to-link">
 													<a href="#">
 														<div><i class="fa fa-heart"></i><span>Add to Wishlist</span></div>
@@ -1196,7 +964,7 @@
 										<div class="sale">Sale</div>
 										<div class="sale-border"></div>
 											<div class="product-img-wrap">
-												<a class="product-img" href="#"> <img src="<?php echo USERASSETS ?>images/product/44.jpg" alt="product-image" /></a>
+												<a class="product-img" href="#"> <img src="images/product/44.jpg" alt="product-image" /></a>
 												<div class="add-to-link">
 													<a href="#">
 														<div><i class="fa fa-heart"></i><span>Add to Wishlist</span></div>

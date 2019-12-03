@@ -140,46 +140,43 @@
         </li>
        
         <li class="nav-item">
-            <a class="nav-link" href="<?php echo base_url();?>admin">
+            <a class="nav-link" href="<?php echo base_url();?>admin/index">
             <span class="menu-title">Dashboard</span>
-            <i class="icon-screen-desktop menu-icon"></i>
+            <i class="icon-diamond menu-icon"></i>
             </a>
         </li>
-        <!-- <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#category" aria-expanded="false" aria-controls="category">
-            <span class="menu-title">Category</span>
-            <i class="icon-list menu-icon"></i>
-            </a>
-            <div class="collapse" id="category">
-                <ul class="nav flex-column sub-menu">
-                  <li class="nav-item"> <a class="nav-link" href="<?php echo base_url();?>admin/category">Category</a></li>
-                </ul>
-              </div>
-        </li> -->
-        
         <li class="nav-item">
-            <a class="nav-link" href="<?php echo base_url();?>admin/category">
+            <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
             <span class="menu-title">Category</span>
-            <i class="icon-list menu-icon"></i>
+            <i class=" icon-list menu-icon"></i>
             </a>
+            <div class="collapse" id="ui-basic">
+            <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="<?php echo base_url();?>admin/category">Category</a></li>
+                <li class="nav-item"> <a class="nav-link" href="<?php echo base_url();?>admin/sub_category">Sub Catgory</a></li>
+                <li class="nav-item"> <a class="nav-link" href="<?php echo base_url();?>admin/sub_sub_category">Sub Sub Category</a></li>
+            </ul>
+            </div>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="<?php echo base_url();?>admin/product">
-            <span class="menu-title">Products</span>
-            <i class="icon-handbag menu-icon"></i>
+            <span class="menu-title">Product</span>
+            <i class="icon-layers menu-icon"></i>
             </a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="<?php echo base_url();?>admin/vendor">
-            <span class="menu-title">Vendors</span>
-            <i class="icon-user-follow menu-icon"></i>
+            <span class="menu-title">Vendor</span>
+            <i class="icon-user-following menu-icon"></i>
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="<?php echo base_url();?>admin/customers">
-            <span class="menu-title">Customers</span>
+            <a class="nav-link" href="<?php echo base_url();?>admin/customer">
+            <span class="menu-title">Customer</span>
             <i class="icon-people menu-icon"></i>
             </a>
         </li>
+        
+
         </ul>
     </nav>

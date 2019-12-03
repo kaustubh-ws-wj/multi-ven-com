@@ -28,6 +28,24 @@ class Services_model extends MY_Model {
        return $this->db->get()->result_array();
    }
    
+   function main_img_resize($type, $id, $ext = '.jpg', $width = '480', $height = '635')
+   {
+       $this->load->library('image_lib');
+       ini_set("memory_limit", "-1");
+       
+       $config1['image_library']  = 'gd2';
+       $config1['create_thumb']   = FALSE;
+       $config1['maintain_ratio'] = TRUE;
+       $config1['width']          = $width;
+       $config1['height']         = $height;
+       $config1['source_image']   = 'uploads/' . $type . '_image/' . $type . '_' . $id . $ext;
+       
+       $this->image_lib->initialize($config1);
+       $this->image_lib->resize();
+       $this->image_lib->clear();
+   }
+
+
    // FILE_UPLOAD
    function img_thumb($type, $id, $ext = '.jpg', $width = '105', $height = '140')
    {
@@ -51,6 +69,7 @@ class Services_model extends MY_Model {
    {
        if ($multi == '') {
            move_uploaded_file($_FILES[$name]['tmp_name'], 'uploads/' . $type . '_image/' . $type . '_' . $id . $ext);
+           $this->Services_model->main_img_resize($type, $id, $ext);
            if ($no_thumb == '') {
                $this->Services_model->img_thumb($type, $id, $ext);
            }
@@ -59,6 +78,7 @@ class Services_model extends MY_Model {
            foreach ($_FILES[$name]['name'] as $i => $row) {
                $ib = $this->file_exist_ret($type, $id, $ib);
                move_uploaded_file($_FILES[$name]['tmp_name'][$i], 'uploads/' . $type . '_image/' . $type . '_' . $id . '_' . $ib . $ext);
+               $this->Services_model->main_img_resize($type, $id . '_' . $ib, $ext);
                if ($no_thumb == '') {
                    $this->Services_model->img_thumb($type, $id . '_' . $ib, $ext);
                }

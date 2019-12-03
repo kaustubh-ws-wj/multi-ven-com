@@ -20,20 +20,33 @@
                 <label for="exampleFormControlSelect1">Category</label>
                 <select class="form-control form-control-lg" name="category" id="category">
                   <option value="">-- Select Category --</option>
-                  <option value="1" <?php echo ($row['category'] == '1')?'selected':'' ?>>Costume Designer</option>
-                  <option value="2" <?php echo ($row['category'] == '2')?'selected':'' ?>>T-shirts</option>
-                  <option value="3" <?php echo ($row['category'] == '3')?'selected':'' ?>>Electronics</option>
+                  <?php foreach($category as $value){?>
+                    <option value="<?php echo $value['id']; ?>" <?php echo ($row['category']==$value['id']) ? 'selected' : '' ?>><?php echo $value['category_name']; ?></option>
+                  <?php }?>
                 </select>
               </div>
             </div>
             <div class="col-md-6">
               <div class="form-group">
                 <label for="exampleFormControlSelect1">Sub Category</label>
-                <select class="form-control form-control-lg" name="sub_category" id="sub-category">
-                  <option value="">-- Select Category --</option>
-                  <option value="1" <?php echo ($row['sub_category'] == '1')?'selected':'' ?>>Costume Designer</option>
-                  <option value="2" <?php echo ($row['sub_category'] == '2')?'selected':'' ?>>T-shirts</option>
-                  <option value="3" <?php echo ($row['sub_category'] == '3')?'selected':'' ?>>Electronics</option>
+                <select class="form-control form-control-lg" name="sub_category" id="sub_category">
+                  <option value="">-- Select Sub Category --</option>
+                  <?php foreach($sub_category as $value){ ?>
+                    <option value="<?php echo $value['id']; ?>" <?php echo ($row['sub_category']==$value['id']) ? 'selected' : '' ?>><?php echo $value['sub_category_name']; ?></option>
+                  <?php } ?>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+          <div class="col-md-6">
+              <div class="form-group">
+                <label for="exampleFormControlSelect1">Sub Category</label>
+                <select class="form-control form-control-lg" name="sub_sub_category" id="sub_sub_category">
+                  <option value="">-- Select Sub Sub Category --</option>
+                  <?php foreach($sub_sub_category as $value){ ?>
+                    <option value="<?php echo $value['id']; ?>" <?php echo ($row['sub_sub_category']==$value['id']) ? 'selected' : ''; ?>><?php echo $value['sub_sub_cat_name']; ?></option>
+                  <?php } ?>
                 </select>
               </div>
             </div>
@@ -152,6 +165,48 @@
         }); 
     });
 
+
+    $('#category').on('change',function(){
+        var category_id = $('#category').val();
+        if(category_id !="" || category_id != null){
+            $.ajax({
+                url:site_url+"admin/sub_category/get_sub_cat_by_cat",
+                data:{'category_id':category_id},
+                type:'POST',
+                dataType:'JSON',
+                success:function(response){
+                  //var parsedobj = JSON.parse(response.sub_category);
+                  var appenddata='<option value="">--Select Sub Categories--</option>';
+                  $.each(response.sub_category, function(index, value) 
+                  {   
+                      appenddata += "<option value = '" + value.id + "'>" + value.sub_category_name + " </option>";    
+                  });
+                  $('#sub_category').html(appenddata);
+                }
+            });
+        }
+    });
+
+    $('#sub_category').on('change',function(){
+        var sub_category_id = $('#sub_category').val();
+        if(sub_category_id !="" || sub_category_id != null){
+            $.ajax({
+                url:site_url+"admin/sub_sub_category/get_sub_sub_cat_by_cat",
+                data:{'sub_category_id':sub_category_id},
+                type:'POST',
+                dataType:'JSON',
+                success:function(response){
+                  //var parsedobj = JSON.parse(response.sub_category);
+                  var appenddata='<option value="">--Select Sub Sub Categories--</option>';
+                  $.each(response.sub_sub_category, function(index, value) 
+                  {   
+                      appenddata += "<option value = '" + value.id + "'>" + value.sub_sub_cat_name + " </option>";    
+                  });
+                  $('#sub_sub_category').html(appenddata);
+                }
+            });
+        }
+    });
 
     $('.file-upload-browse').on('click', function() {
       var file = $(this).parent().parent().parent().find('.file-upload-default');

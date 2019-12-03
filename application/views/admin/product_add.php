@@ -17,26 +17,31 @@
             <div class="col-md-6">
               <div class="form-group">
                 <label for="exampleFormControlSelect1">Category</label>
-                <select class="form-control form-control-lg" name="category" id="exampleFormControlSelect1">
-                  <!-- <option value="1" >Costume Designer</option>
-                  <option value="2">T-Shirts</option>
-                  <option value="3">Electronics</option> -->
+                <select class="form-control form-control-lg" name="category" id="category">
                   <option value="1" >-Select Category-</option>
-                  <?php foreach($cat_data as $value){?>
-                  <option value="<?php echo $value->id; ?>"><?php echo $value->category_name; ?></option>
+                  <?php foreach($category as $value){?>
+                  <option value="<?php echo $value['id']; ?>"><?php echo $value['category_name']; ?></option>
                   <?php }?>
                 </select>
               </div>
             </div>
             <div class="col-md-6">
               <div class="form-group">
-              <label for="exampleFormControlSelect1">Sub Category</label>
-              <select class="form-control form-control-lg" name="sub_category" id="exampleFormControlSelect1">
-              <option value="1" >-Select Category-</option>
-                <option value="2">Costume Designer</option>
-                <option value="3">T-Shirts</option>
-                <option value="4">Electronics</option>
-              </select>
+                <label for="exampleFormControlSelect1">Sub Category</label>
+                <select class="form-control form-control-lg" name="sub_category" id="sub_category">
+                  <option value="">-Select Sub Category-</option>
+                
+                </select>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="exampleFormControlSelect1">Sub Sub Category</label>
+                <select class="form-control form-control-lg" name="sub_sub_category" id="sub_sub_category">
+                  <option value="">-Select Sub Sub Category-</option>    
+                </select>
             </div>
           </div>
         </div>
@@ -92,18 +97,18 @@
   (function($) {
   'use strict';
   $(function() {
-  window.preview = function (input) {
-  if (input.files && input.files[0]) {
-  $("#previewImg").html('');
-  $(input.files).each(function () {
-  var reader = new FileReader();
-  reader.readAsDataURL(this);
-  reader.onload = function (e) {
-  $("#previewImg").append("<div style='float:left;border:4px solid #303641;padding:5px;margin:5px;'><img style='height:100px;width:100px;' src='" + e.target.result + "'></div>");
+      window.preview = function (input) {
+      if (input.files && input.files[0]) {
+      $("#previewImg").html('');
+      $(input.files).each(function () {
+      var reader = new FileReader();
+      reader.readAsDataURL(this);
+      reader.onload = function (e) {
+      $("#previewImg").append("<div style='float:left;border:4px solid #303641;padding:5px;margin:5px;'><img style='height:100px;width:100px;' src='" + e.target.result + "'></div>");
+        }
+      });
+      }
     }
-  });
-  }
-}
       $('.file-upload-browse').on('click', function() {
       var file = $(this).parent().parent().parent().find('.file-upload-default');
       file.trigger('click');
@@ -111,6 +116,51 @@
     $('.file-upload-default').on('change', function() {
       $(this).parent().find('.form-control').val($(this).val().replace(/C:\\fakepath\\/i, ''));
     });
+
+
+    $('#category').on('change',function(){
+        var category_id = $('#category').val();
+        if(category_id !="" || category_id != null){
+            $.ajax({
+                url:site_url+"admin/sub_category/get_sub_cat_by_cat",
+                data:{'category_id':category_id},
+                type:'POST',
+                dataType:'JSON',
+                success:function(response){
+                  //var parsedobj = JSON.parse(response.sub_category);
+                  var appenddata='<option value="">--Select Sub Categories--</option>';
+                  $.each(response.sub_category, function(index, value) 
+                  {   
+                      appenddata += "<option value = '" + value.id + "'>" + value.sub_category_name + " </option>";    
+                  });
+                  $('#sub_category').html(appenddata);
+                }
+            });
+        }
+    });
+
+    $('#sub_category').on('change',function(){
+        var sub_category_id = $('#sub_category').val();
+        if(sub_category_id !="" || sub_category_id != null){
+            $.ajax({
+                url:site_url+"admin/sub_sub_category/get_sub_sub_cat_by_cat",
+                data:{'sub_category_id':sub_category_id},
+                type:'POST',
+                dataType:'JSON',
+                success:function(response){
+                  //var parsedobj = JSON.parse(response.sub_category);
+                  var appenddata='<option value="">--Select Sub Sub Categories--</option>';
+                  $.each(response.sub_sub_category, function(index, value) 
+                  {   
+                      appenddata += "<option value = '" + value.id + "'>" + value.sub_sub_cat_name + " </option>";    
+                  });
+                  $('#sub_sub_category').html(appenddata);
+                }
+            });
+        }
+    });
+
+
   });
 })(jQuery);
 </script>
