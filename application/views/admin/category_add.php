@@ -14,6 +14,7 @@
               <label for="exampleInputText">Description</label>
               <textarea class="form-control" name="description" id="exampleTextarea1" rows="4"></textarea>
             </div>
+            
             <div class="form-group">
               <label>Status</label>
               <select class="form-control form-control-lg" name="status" id="exampleFormControlSelect1">
@@ -29,5 +30,3 @@
     </div>
   </div>
 </div>
-<script src="../../../assets/js/form-validation.js"></script>
-<script src="../../../assets/js/bt-maxLength.js"></script>

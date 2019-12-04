@@ -70,32 +70,6 @@
 	</div>
 </section>
 <!-- End-slider-->
-<!-- Start-banner-area-->
-<div class="banner-area padding-t banner-dis1">
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-				<div class="single-banner banner-r-b">
-					<a href="#"><img alt="Hi Guys" src="<?php echo USERASSETS ?>images/banner/1.jpg" /></a>
-				</div>
-			</div>
-			<div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
-				<div class="single-banner banner-m-b">
-					<a href="#"><img alt="Hi Guys" src="<?php echo USERASSETS ?>images/banner/2.jpg" /></a>
-				</div>
-				<div class="single-banner banner-r-b">
-					<a href="#"><img alt="Hi Guys" src="<?php echo USERASSETS ?>images/banner/3.jpg" /></a>
-				</div>
-			</div>
-			<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-				<div class="single-banner banner-4">
-					<a href="#"><img alt="Hi Guys" src="<?php echo USERASSETS ?>images/banner/4.jpg" /></a>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-<!-- End-banner-area-->
 <!-- Start-featured-area-->
 <div class="featured-product-wrap padding-t padding-dis">
 	<div class="container">
@@ -128,7 +102,7 @@
 										<div class="new">new</div>
 										<div class="sale-border"></div>
 											<div class="product-img-wrap">
-												<a class="product-img" href="#"> <img style="width:263px;height:347.92px;" src="<?php echo $this->Services_model->file_view('product',$row['id'],'','','no','src','multi','one');?>" /></a>
+												<a class="product-img" href="#"> <img style="width:263px;height:347.92px;" src="<?php echo $this->Services_model->get_img_file('product',$row['id'],'','','no','src','multi','one');?>" /></a>
 												<div class="add-to-link">
 													<a href="#">
 														<div><i class="fa fa-heart"></i><span>Add to Wishlist</span></div>
@@ -1067,25 +1041,7 @@
 </div>
 <!--End-latest-trend-area-->
 <div class="clear"></div>
-<!--Start-banner-area-->
-<div class="banner-area padding-t banner-dis11">
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
-				<div class="single-banner banner-r-b">
-					<a href="#"><img alt="Hi Guys" src="<?php echo USERASSETS ?>images/banner/5.jpg" /></a>
-				</div>
-			</div>
-			<div class="col-lg-7 col-md-7 col-sm-7 col-xs-12">
-				<div class="single-banner">
-					<a href="#"><img alt="Hi Guys" src="<?php echo USERASSETS ?>images/banner/6.jpg" /></a>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-<!--End-banner-area-->
-<div class="clear"></div>
+
 <!--Start-new-arrival-random-wrap-->
 <div class="new-arrival-random-products-wrap padding-t">
 	<div class="container">
@@ -1112,7 +1068,7 @@
 							<div class="new">new</div>
 							<div class="sale-border"></div>
 								<div class="product-img-wrap">
-									<a class="product-img" href="#"> <img src="<?php echo  $this->Services_model->file_view('product',$value['id'],'','','no','src','multi','one'); ?>" alt="product-image" /></a>
+									<a class="product-img" href="#"> <img style="width:263px;height:347.92px;" src="<?php echo  $this->Services_model->file_view('product',$value['id'],'','','no','src','multi','one'); ?>" alt="product-image" /></a>
 									<div class="add-to-link">
 										<a href="#">
 											<div><i class="fa fa-heart"></i><span>Add to Wishlist</span></div>
@@ -1152,146 +1108,7 @@
 							</div>
 						</div>
 						<?php }?>
-						<!-- End-single-product -->
-						<!-- Start-single-product -->
-						<!-- <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-							<div class="single-product">
-							<div class="new">new</div>
-								<div class="product-img-wrap">
-									<a class="product-img" href="#"> <img src="<?php echo USERASSETS ?>images/product/10.jpg" alt="product-image" /></a>
-									<div class="add-to-link">
-										<a href="#">
-											<div><i class="fa fa-heart"></i><span>Add to Wishlist</span></div>
-										</a>
-										<a data-toggle="modal" data-target="#productModal" href="#">
-											<div><i class="fa fa-eye"></i><span>Quick view</span></div>
-										</a>
-										<a href="#">
-											<div><i class="fa fa-random"></i><span>Add to compare</span></div>
-										</a>
-									</div>
-									<div class="add-to-cart">
-										<a href="#" title="add to cart">
-											<div><i class="fa fa-shopping-cart"></i><span>Add to cart</span></div>
-										</a>
-									</div>
-								</div>
-								<div class="product-info text-center">
-									<div class="product-content">
-										<a href="#"><h3 class="pro-name">Sample Product</h3></a>
-										<div class="pro-rating">
-											<ul>
-												<li><i class="fa fa-star"></i></li>
-												<li><i class="fa fa-star"></i></li>
-												<li><i class="fa fa-star"></i></li>
-												<li class="r-grey"><i class="fa fa-star"></i></li>
-												<li class="r-grey"><i class="fa fa-star-half-o"></i></li>
-											</ul>
-										</div>
-										<div class="pro-price">
-											<span class="price-text">Price:</span>
-											<span class="normal-price">$140.00</span>
-											<span class="old-price"><del>$170.00</del></span>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div> -->
-						<!-- End-single-product -->
-						<!-- Start-single-product -->
-						<!-- <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-							<div class="single-product">
-							<div class="sale">Sale</div>
-							<div class="new">new</div>
-							<div class="sale-border"></div>
-								<div class="product-img-wrap">
-									<a class="product-img" href="#"> <img src="<?php echo USERASSETS ?>images/product/8.jpg" alt="product-image" /></a>
-									<div class="add-to-link">
-										<a href="#">
-											<div><i class="fa fa-heart"></i><span>Add to Wishlist</span></div>
-										</a>
-										<a data-toggle="modal" data-target="#productModal" href="#">
-											<div><i class="fa fa-eye"></i><span>Quick view</span></div>
-										</a>
-										<a href="#">
-											<div><i class="fa fa-random"></i><span>Add to compare</span></div>
-										</a>
-									</div>
-									<div class="add-to-cart">
-										<a href="#" title="add to cart">
-											<div><i class="fa fa-shopping-cart"></i><span>Add to cart</span></div>
-										</a>
-									</div>
-								</div>
-								<div class="product-info text-center">
-									<div class="product-content">
-										<a href="#"><h3 class="pro-name">Sample Product</h3></a>
-										<div class="pro-rating">
-											<ul>
-												<li><i class="fa fa-star"></i></li>
-												<li><i class="fa fa-star"></i></li>
-												<li><i class="fa fa-star"></i></li>
-												<li><i class="fa fa-star"></i></li>
-												<li class="r-grey"><i class="fa fa-star-half-o"></i></li>
-											</ul>
-										</div>
-										<div class="pro-price">
-											<span class="price-text">Price:</span>
-											<span class="normal-price">$240.00</span>
-											<span class="old-price"><del>$300.00</del></span>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div> -->
-						<!-- End-single-product -->
-						<!-- Start-single-product -->
-						<!-- <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-							<div class="single-product">
-							<div class="sale">Sale</div>
-							<div class="sale-border"></div>
-								<div class="product-img-wrap">
-									<a class="product-img" href="#"> <img src="<?php echo USERASSETS ?>images/product/1.jpg" alt="product-image" /></a>
-									<div class="add-to-link">
-										<a href="#">
-											<div><i class="fa fa-heart"></i><span>Add to Wishlist</span></div>
-										</a>
-										<a data-toggle="modal" data-target="#productModal" href="#">
-											<div><i class="fa fa-eye"></i><span>Quick view</span></div>
-										</a>
-										<a href="#">
-											<div><i class="fa fa-random"></i><span>Add to compare</span></div>
-										</a>
-									</div>
-									<div class="add-to-cart">
-										<a href="#" title="add to cart">
-											<div><i class="fa fa-shopping-cart"></i><span>Add to cart</span></div>
-										</a>
-									</div>
-								</div>
-								<div class="product-info text-center">
-									<div class="product-content">
-										<a href="#"><h3 class="pro-name">Sample Product</h3></a>
-										<div class="pro-rating">
-											<ul>
-												<li><i class="fa fa-star"></i></li>
-												<li><i class="fa fa-star"></i></li>
-												<li><i class="fa fa-star"></i></li>
-												<li class="r-grey"><i class="fa fa-star"></i></li>
-												<li class="r-grey"><i class="fa fa-star-half-o"></i></li>
-											</ul>
-										</div>
-										<div class="pro-price">
-											<span class="price-text">Price:</span>
-											<span class="normal-price">$200.00</span>
-											<span class="old-price"><del>$220.00</del></span>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div> -->
-						<!-- End-single-product -->
-						<!-- Start-single-product -->
+						
 						<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
 							<div class="single-product">
 							<div class="new">new</div>
@@ -1643,331 +1460,51 @@
 		<div class="row">
 			<div class="featured-carousel indicator">
 				<!-- Start-single-product -->
-				<?php foreach($prod_data as $value) { 
-					//   $thumbs = $this->Services_model->file_view('product',$value['id'],'','','thumb','src','multi','all');
-					?>
-				<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-					<div class="single-product sold-out">
-					<div class="sale">Sale</div>
-					<div class="sale-border"></div>
-						<div class="product-img-wrap">
-							<a class="product-img" href="#"> <img src="<?php echo $this->Services_model->file_view('product',$value['id'],'','','no','src','multi','one');?>" alt="product-image" /></a>
-							<div class="add-to-link">
-								<a href="#">
-									<div><i class="fa fa-heart"></i><span>Add to Wishlist</span></div>
-								</a>
-								<a data-toggle="modal" data-target="#productModal" href="#">
-									<div><i class="fa fa-eye"></i><span>Quick view</span></div>
-								</a>
-								<a href="#">
-									<div><i class="fa fa-random"></i><span>Add to compare</span></div>
-								</a>
-							</div>
-							<!-- <div class="sold-text">
-								<span>Sold <br> Out</span>
-							</div> -->
-						</div>
-						<div class="product-info text-center">
-							<div class="product-content">
-								<a href="#"><h3 class="pro-name"><?php echo $value['title']; ?></h3></a>
-								<div class="pro-rating">
-									<ul>
-										<li><i class="fa fa-star"></i></li>
-										<li><i class="fa fa-star"></i></li>
-										<li><i class="fa fa-star"></i></li>
-										<li class="r-grey"><i class="fa fa-star"></i></li>
-										<li class="r-grey"><i class="fa fa-star-half-o"></i></li>
-									</ul>
+				<?php foreach($prod_data as $value) { ?>
+					<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+						<div class="single-product">
+						<div class="sale">Sale</div>
+						<div class="sale-border"></div>
+							<div class="product-img-wrap">
+								<a class="product-img" href="#"> <img style="width:263px;height:347.92px;" src="<?php echo $this->Services_model->file_view('product',$value['id'],'','','no','src','multi','one');?>" alt="product-image" /></a>
+								<div class="add-to-link">
+									<a href="#">
+										<div><i class="fa fa-heart"></i><span>Add to Wishlist</span></div>
+									</a>
+									<a data-toggle="modal" data-target="#productModal" href="#">
+										<div><i class="fa fa-eye"></i><span>Quick view</span></div>
+									</a>
+									<a href="#">
+										<div><i class="fa fa-random"></i><span>Add to compare</span></div>
+									</a>
 								</div>
-								<div class="pro-price">
-									<span class="price-text">Price:</span>
-									<span class="normal-price"><?php echo $value['sale_price']; ?></span>
-									<span class="old-price"><del><?php echo $value['sale_price']; ?></del></span>
-								</div>
+								<!-- <div class="sold-text">
+									<span>Sold <br> Out</span>
+								</div> -->
 							</div>
-						</div>
-					</div>
-				</div>
-				<?php }?>
-				<!-- End-single-product -->
-				<!-- Start-single-product -->
-				<!-- <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-					<div class="single-product">
-					<div class="sale">Sale</div>
-					<div class="new">new</div>
-					<div class="sale-border"></div>
-						<div class="product-img-wrap">
-							<a class="product-img" href="#"> <img src="<?php echo USERASSETS ?>images/product/1.jpg" alt="product-image" /></a>
-							<div class="add-to-link">
-								<a href="#">
-									<div><i class="fa fa-heart"></i><span>Add to Wishlist</span></div>
-								</a>
-								<a data-toggle="modal" data-target="#productModal" href="#">
-									<div><i class="fa fa-eye"></i><span>Quick view</span></div>
-								</a>
-								<a href="#">
-									<div><i class="fa fa-random"></i><span>Add to compare</span></div>
-								</a>
-							</div>
-							<div class="add-to-cart">
-								<a href="#" title="add to cart">
-									<div><i class="fa fa-shopping-cart"></i><span>Add to cart</span></div>
-								</a>
-							</div>
-						</div>
-						<div class="product-info text-center">
-							<div class="product-content">
-								<a href="#"><h3 class="pro-name">Sample Product</h3></a>
-								<div class="pro-rating">
-									<ul>
-										<li><i class="fa fa-star"></i></li>
-										<li><i class="fa fa-star"></i></li>
-										<li><i class="fa fa-star"></i></li>
-										<li class="r-grey"><i class="fa fa-star"></i></li>
-										<li class="r-grey"><i class="fa fa-star-half-o"></i></li>
-									</ul>
-								</div>
-								<div class="pro-price">
-									<span class="price-text">Price:</span>
-									<span class="normal-price">$200.00</span>
-									<span class="old-price"><del>$220.00</del></span>
+							<div class="product-info text-center">
+								<div class="product-content">
+									<a href="#"><h3 class="pro-name"><?php echo $value['title']; ?></h3></a>
+									<div class="pro-rating">
+										<ul>
+											<li><i class="fa fa-star"></i></li>
+											<li><i class="fa fa-star"></i></li>
+											<li><i class="fa fa-star"></i></li>
+											<li class="r-grey"><i class="fa fa-star"></i></li>
+											<li class="r-grey"><i class="fa fa-star-half-o"></i></li>
+										</ul>
+									</div>
+									<div class="pro-price">
+										<span class="price-text">Price:</span>
+										<span class="normal-price"><?php echo $value['sale_price']; ?></span>
+										<span class="old-price"><del><?php echo $value['sale_price']; ?></del></span>
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-				</div> -->
-				<!-- End-single-product -->
-				<!-- Start-single-product -->
-				<!-- <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-					<div class="single-product">
-					<div class="sale">Sale</div>
-					<div class="sale-border"></div>
-						<div class="product-img-wrap">
-							<a class="product-img" href="#"> <img src="<?php echo USERASSETS ?>images/product/9.jpg" alt="product-image" /></a>
-							<div class="add-to-link">
-								<a href="#">
-									<div><i class="fa fa-heart"></i><span>Add to Wishlist</span></div>
-								</a>
-								<a data-toggle="modal" data-target="#productModal" href="#">
-									<div><i class="fa fa-eye"></i><span>Quick view</span></div>
-								</a>
-								<a href="#">
-									<div><i class="fa fa-random"></i><span>Add to compare</span></div>
-								</a>
-							</div>
-							<div class="add-to-cart">
-								<a href="#" title="add to cart">
-									<div><i class="fa fa-shopping-cart"></i><span>Add to cart</span></div>
-								</a>
-							</div>
-						</div>
-						<div class="product-info text-center">
-							<div class="product-content">
-								<a href="#"><h3 class="pro-name">Sample Product</h3></a>
-								<div class="pro-rating">
-									<ul>
-										<li><i class="fa fa-star"></i></li>
-										<li><i class="fa fa-star"></i></li>
-										<li><i class="fa fa-star"></i></li>
-										<li><i class="fa fa-star"></i></li>
-										<li class="r-grey"><i class="fa fa-star-half-o"></i></li>
-									</ul>
-								</div>
-								<div class="pro-price">
-									<span class="price-text">Price:</span>
-									<span class="normal-price">$170.00</span>
-									<span class="old-price"><del>$200.00</del></span>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div> -->
-				<!-- End-single-product -->
-				<!-- Start-single-product -->
-				<!-- <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-					<div class="single-product">
-					<div class="new">new</div>
-						<div class="product-img-wrap">
-							<a class="product-img" href="#"> <img src="<?php echo USERASSETS ?>images/product/8.jpg" alt="product-image" /></a>
-							<div class="add-to-link">
-								<a href="#">
-									<div><i class="fa fa-heart"></i><span>Add to Wishlist</span></div>
-								</a>
-								<a data-toggle="modal" data-target="#productModal" href="#">
-									<div><i class="fa fa-eye"></i><span>Quick view</span></div>
-								</a>
-								<a href="#">
-									<div><i class="fa fa-random"></i><span>Add to compare</span></div>
-								</a>
-							</div>
-							<div class="add-to-cart">
-								<a href="#" title="add to cart">
-									<div><i class="fa fa-shopping-cart"></i><span>Add to cart</span></div>
-								</a>
-							</div>
-						</div>
-						<div class="product-info text-center">
-							<div class="product-content">
-								<a href="#"><h3 class="pro-name">Sample Product</h3></a>
-								<div class="pro-rating">
-									<ul>
-										<li><i class="fa fa-star"></i></li>
-										<li><i class="fa fa-star"></i></li>
-										<li class="r-grey"><i class="fa fa-star"></i></li>
-										<li class="r-grey"><i class="fa fa-star"></i></li>
-										<li class="r-grey"><i class="fa fa-star-half-o"></i></li>
-									</ul>
-								</div>
-								<div class="pro-price">
-									<span class="price-text">Price:</span>
-									<span class="normal-price">$200.00</span>
-									<span class="old-price"><del>$220.00</del></span>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div> -->
-				<!-- End-single-product -->
-				<!-- Start-single-product -->
-				<!-- <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-					<div class="single-product">
-					<div class="sale">Sale</div>
-					<div class="sale-border"></div>
-						<div class="product-img-wrap">
-							<a class="product-img" href="#"> <img src="<?php echo USERASSETS ?>images/product/6.jpg" alt="product-image" /></a>
-							<div class="add-to-link">
-								<a href="#">
-									<div><i class="fa fa-heart"></i><span>Add to Wishlist</span></div>
-								</a>
-								<a data-toggle="modal" data-target="#productModal" href="#">
-									<div><i class="fa fa-eye"></i><span>Quick view</span></div>
-								</a>
-								<a href="#">
-									<div><i class="fa fa-random"></i><span>Add to compare</span></div>
-								</a>
-							</div>
-							<div class="add-to-cart">
-								<a href="#" title="add to cart">
-									<div><i class="fa fa-shopping-cart"></i><span>Add to cart</span></div>
-								</a>
-							</div>
-						</div>
-						<div class="product-info text-center">
-							<div class="product-content">
-								<a href="#"><h3 class="pro-name">Sample Product</h3></a>
-								<div class="pro-rating">
-									<ul>
-										<li><i class="fa fa-star"></i></li>
-										<li><i class="fa fa-star"></i></li>
-										<li><i class="fa fa-star"></i></li>
-										<li class="r-grey"><i class="fa fa-star"></i></li>
-										<li class="r-grey"><i class="fa fa-star-half-o"></i></li>
-									</ul>
-								</div>
-								<div class="pro-price">
-									<span class="price-text">Price:</span>
-									<span class="normal-price">$200.00</span>
-									<span class="old-price"><del>$220.00</del></span>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div> -->
-				<!-- End-single-product -->
-				<!-- Start-single-product -->
-				<!-- <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-					<div class="single-product">
-					<div class="sale">Sale</div>
-					<div class="new">new</div>
-					<div class="sale-border"></div>
-						<div class="product-img-wrap">
-							<a class="product-img" href="#"> <img src="<?php echo USERASSETS ?>images/product/5.jpg" alt="product-image" /></a>
-							<div class="add-to-link">
-								<a href="#">
-									<div><i class="fa fa-heart"></i><span>Add to Wishlist</span></div>
-								</a>
-								<a data-toggle="modal" data-target="#productModal" href="#">
-									<div><i class="fa fa-eye"></i><span>Quick view</span></div>
-								</a>
-								<a href="#">
-									<div><i class="fa fa-random"></i><span>Add to compare</span></div>
-								</a>
-							</div>
-							<div class="add-to-cart">
-								<a href="#" title="add to cart">
-									<div><i class="fa fa-shopping-cart"></i><span>Add to cart</span></div>
-								</a>
-							</div>
-						</div>
-						<div class="product-info text-center">
-							<div class="product-content">
-								<a href="#"><h3 class="pro-name">Sample Product</h3></a>
-								<div class="pro-rating">
-									<ul>
-										<li><i class="fa fa-star"></i></li>
-										<li><i class="fa fa-star"></i></li>
-										<li><i class="fa fa-star"></i></li>
-										<li class="r-grey"><i class="fa fa-star"></i></li>
-										<li class="r-grey"><i class="fa fa-star-half-o"></i></li>
-									</ul>
-								</div>
-								<div class="pro-price">
-									<span class="price-text">Price:</span>
-									<span class="normal-price">$280.00</span>
-									<span class="old-price"><del>$300.00</del></span>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div> -->
-				<!-- End-single-product -->
-				<!-- Start-single-product -->
-				<!-- <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-					<div class="single-product">
-					<div class="sale">Sale</div>
-					<div class="sale-border"></div>
-						<div class="product-img-wrap">
-							<a class="product-img" href="#"> <img src="<?php echo USERASSETS ?>images/product/2.jpg" alt="product-image" /></a>
-							<div class="add-to-link">
-								<a href="#">
-									<div><i class="fa fa-heart"></i><span>Add to Wishlist</span></div>
-								</a>
-								<a data-toggle="modal" data-target="#productModal" href="#">
-									<div><i class="fa fa-eye"></i><span>Quick view</span></div>
-								</a>
-								<a href="#">
-									<div><i class="fa fa-random"></i><span>Add to compare</span></div>
-								</a>
-							</div>
-							<div class="add-to-cart">
-								<a href="#" title="add to cart">
-									<div><i class="fa fa-shopping-cart"></i><span>Add to cart</span></div>
-								</a>
-							</div>
-						</div>
-						<div class="product-info text-center">
-							<div class="product-content">
-								<a href="#"><h3 class="pro-name">Sample Product</h3></a>
-								<div class="pro-rating">
-									<ul>
-										<li><i class="fa fa-star"></i></li>
-										<li><i class="fa fa-star"></i></li>
-										<li><i class="fa fa-star"></i></li>
-										<li class="r-grey"><i class="fa fa-star"></i></li>
-										<li class="r-grey"><i class="fa fa-star-half-o"></i></li>
-									</ul>
-								</div>
-								<div class="pro-price">
-									<span class="price-text">Price:</span>
-									<span class="normal-price">$200.00</span>
-									<span class="old-price"><del>$220.00</del></span>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div> -->
-				<!-- End-single-product -->
-
+				<?php } ?>
+				
 			</div>
 		</div>
 	</div>
@@ -1986,223 +1523,6 @@
 	</div>
 </div>
 <!-- End-banner-area-->
-<!--Start-latest-testimonials-->
-<div class="latest-testimonial-wrap">
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
-				<!--start-testimonial-heading-->
-				<div class="testimonial-heading">
-					<div class="section-heading">
-						<h3><span class="h-color">Latest</span> Testimonials</h3>
-					</div>
-				</div>
-				<!--End-testimonial-heading-->
-			</div>
-		</div>
-	</div>
-	<div class="main-testimonial">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-					<div class="testimonial-carousel indicator">
-						<!--single-testimonial-start-->
-						<div class="single-testimonial">
-							<div class="testimonial-img">
-								<p><img src="<?php echo USERASSETS ?>images/testimonial/1.jpg" alt=""></p>
-							</div>
-							<div class="testimonial-des home-1">
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mattis dui odio, non suscipit consectetur elit, Lorem ipsum dolor sit<br> amet, consectetur adipiscing elit. Mattis dui odio, non suscipit , Lorem... </p>
-							</div>
-							<div class="testimonial-author">
-								<h5>Miss.Anna</h5>
-							</div>
-						</div>
-						<!--single-testimonial-end-->
-						<!--single-testimonial-start-->
-						<div class="single-testimonial">
-							<div class="testimonial-img">
-								<p><img src="<?php echo USERASSETS ?>images/testimonial/2.jpg" alt=""></p>
-							</div>
-							<div class="testimonial-des">
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mattis dui odio, non suscipit consectetur elit, Lorem ipsum dolor sit<br> amet, consectetur adipiscing elit. Mattis dui odio, non suscipit , Lorem... </p>
-							</div>
-							<div class="testimonial-author">
-								<h5>Jems David</h5>
-							</div>
-						</div>
-						<!--single-testimonial-end-->
-						<!--single-testimonial-start-->
-						<div class="single-testimonial">
-							<div class="testimonial-img">
-								<p><img src="<?php echo USERASSETS ?>images/testimonial/3.jpg" alt=""></p>
-							</div>
-							<div class="testimonial-des">
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mattis dui odio, non suscipit consectetur elit, Lorem ipsum dolor sit<br> amet, consectetur adipiscing elit. Mattis dui odio, non suscipit , Lorem... </p>
-							</div>
-							<div class="testimonial-author">
-								<h5>Miss.Jerin</h5>
-							</div>
-						</div>
-						<!--single-testimonial-end-->
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-<!--End-latest-testimonials-->
-<!--Start-blog-area-->
-<div class="latest-blog-wrap padding-t">
-	<div class="container">
-		<!--start-blog-area-heading-->
-		<div class="row">
-			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-				<div class="blog-heading">
-					<div class="section-heading">
-						<h3><span class="h-color">Our</span> latest Blog</h3>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!--end-blog-area-heading-->
-		<div class="row">
-			<div class="blog-carousel indicator">
-				<!--start-single-blog-area-->
-				<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-					<div class="single-blog">
-						<div class="blog-img">
-							<a href="#"><img src="<?php echo USERASSETS ?>images/blog/1.jpg" alt=""></a>
-							<div class="blog-up-text">
-								<span class="date">21</span>
-								<span class="month">February</span>
-							</div>
-						</div>
-						<div class="blog-inner-content">
-							<div class="blog-title">
-								<a href="#"><h4>Lorem Ipsum is not simply random. </h4></a>
-							</div>
-							<div class="post-time">
-								<span class="post-date"><i class="fa fa-user"></i> Posted By Admin</span>
-								<span class="comment"><i class="fa fa-comment-o"></i> <a href="#">21 Comments</a></span>
-								<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has.</p>
-							</div>
-							<div class="blog-button">
-								<a class="blog-readmore" href="#">read more <span><i class="fa fa-long-arrow-right"></i></span></a>
-							</div>
-						</div>
-					</div>
-				</div>
-				<!--end-single-blog-area-->
-				<!--start-single-blog-area-->
-				<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-					<div class="single-blog">
-						<div class="blog-img">
-							<a href="#"><img src="<?php echo USERASSETS ?>images/blog/2.jpg" alt=""></a>
-							<div class="blog-up-text">
-								<span class="date">21</span>
-								<span class="month">February</span>
-							</div>
-						</div>
-						<div class="blog-inner-content">
-							<div class="blog-title">
-								<a href="#"><h4>Lorem Ipsum is not simply random. </h4></a>
-							</div>
-							<div class="post-time">
-								<span class="post-date"><i class="fa fa-user"></i> Posted By Admin</span>
-								<span class="comment"><i class="fa fa-comment-o"></i> <a href="#">21 Comments</a></span>
-								<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has.</p>
-							</div>
-							<div class="blog-button">
-								<a class="blog-readmore" href="#">read more <span><i class="fa fa-long-arrow-right"></i></span></a>
-							</div>
-						</div>
-					</div>
-				</div>
-				<!--end-single-blog-area-->
-				<!--start-single-blog-area-->
-				<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-					<div class="single-blog">
-						<div class="blog-img">
-							<a href="#"><img src="<?php echo USERASSETS ?>images/blog/3.jpg" alt=""></a>
-							<div class="blog-up-text">
-								<span class="date">21</span>
-								<span class="month">February</span>
-							</div>
-						</div>
-						<div class="blog-inner-content">
-							<div class="blog-title">
-								<a href="#"><h4>Lorem Ipsum is not simply random. </h4></a>
-							</div>
-							<div class="post-time">
-								<span class="post-date"><i class="fa fa-user"></i> Posted By Admin</span>
-								<span class="comment"><i class="fa fa-comment-o"></i> <a href="#">21 Comments</a></span>
-								<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has.</p>
-							</div>
-							<div class="blog-button">
-								<a class="blog-readmore" href="#">read more <span><i class="fa fa-long-arrow-right"></i></span></a>
-							</div>
-						</div>
-					</div>
-				</div>
-				<!--end-single-blog-area-->
-				<!--start-single-blog-area-->
-				<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-					<div class="single-blog">
-						<div class="blog-img">
-							<a href="#"><img src="<?php echo USERASSETS ?>images/blog/4.jpg" alt=""></a>
-							<div class="blog-up-text">
-								<span class="date">21</span>
-								<span class="month">February</span>
-							</div>
-						</div>
-						<div class="blog-inner-content">
-							<div class="blog-title">
-								<a href="#"><h4>Lorem Ipsum is not simply random. </h4></a>
-							</div>
-							<div class="post-time">
-								<span class="post-date"><i class="fa fa-user"></i> Posted By Admin</span>
-								<span class="comment"><i class="fa fa-comment-o"></i> <a href="#">21 Comments</a></span>
-								<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has.</p>
-							</div>
-							<div class="blog-button">
-								<a class="blog-readmore" href="#">read more <span><i class="fa fa-long-arrow-right"></i></span></a>
-							</div>
-						</div>
-					</div>
-				</div>
-				<!--end-single-blog-area-->
-				<!--start-single-blog-area-->
-				<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-					<div class="single-blog">
-						<div class="blog-img">
-							<a href="#"><img src="<?php echo USERASSETS ?>images/blog/1.jpg" alt=""></a>
-							<div class="blog-up-text">
-								<span class="date">21</span>
-								<span class="month">February</span>
-							</div>
-						</div>
-						<div class="blog-inner-content">
-							<div class="blog-title">
-								<a href="#"><h4>Lorem Ipsum is not simply random. </h4></a>
-							</div>
-							<div class="post-time">
-								<span class="post-date"><i class="fa fa-user"></i> Posted By Admin</span>
-								<span class="comment"><i class="fa fa-comment-o"></i> <a href="#">21 Comments</a></span>
-								<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has.</p>
-							</div>
-							<div class="blog-button">
-								<a class="blog-readmore" href="#">read more <span><i class="fa fa-long-arrow-right"></i></span></a>
-							</div>
-						</div>
-					</div>
-				</div>
-				<!--end-single-blog-area-->
-			</div>
-		</div>
-	</div>
-</div>
-<!--End-blog-area-->
 <!--Start-brand-area-->
 <div class="brands-area brand-dis1">
 	<div class="container">

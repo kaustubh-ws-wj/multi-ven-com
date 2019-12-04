@@ -68,21 +68,41 @@ class Services_model extends MY_Model {
    function file_up($name, $type, $id, $multi = '', $no_thumb = '', $ext = '.jpg')
    {
        if ($multi == '') {
-           move_uploaded_file($_FILES[$name]['tmp_name'], 'uploads/' . $type . '_image/' . $type . '_' . $id . $ext);
-           $this->Services_model->main_img_resize($type, $id, $ext);
-           if ($no_thumb == '') {
-               $this->Services_model->img_thumb($type, $id, $ext);
-           }
+            if(move_uploaded_file($_FILES[$name]['tmp_name'], 'uploads/' . $type . '_image/' . $type . '_' . $id . $ext)){
+                    $this->Services_model->main_img_resize($type, $id, $ext);
+                    if ($no_thumb == '') {
+                        $this->Services_model->img_thumb($type, $id, $ext);
+                        $data = array(
+                            $type.'_id' => $id,
+                            'type'  => $type,
+                            'image' => 'uploads/' . $type . '_image/' . $type . '_' . $id . $ext,
+                            'thumb' => 'uploads/' . $type . '_image/' . $type . '_' . $id . '_thumb' . $ext,
+                            'created_date' => time()
+                            );
+                            $this->db->insert($type.'_images',$data);
+                    }
+            }
        } elseif ($multi == 'multi') {
            $ib = 1;
+           
            foreach ($_FILES[$name]['name'] as $i => $row) {
                $ib = $this->file_exist_ret($type, $id, $ib);
-               move_uploaded_file($_FILES[$name]['tmp_name'][$i], 'uploads/' . $type . '_image/' . $type . '_' . $id . '_' . $ib . $ext);
-               $this->Services_model->main_img_resize($type, $id . '_' . $ib, $ext);
-               if ($no_thumb == '') {
-                   $this->Services_model->img_thumb($type, $id . '_' . $ib, $ext);
-               }
+                if(move_uploaded_file($_FILES[$name]['tmp_name'][$i], 'uploads/' . $type . '_image/' . $type . '_' . $id . '_' . $ib . $ext)){
+                        $this->Services_model->main_img_resize($type, $id . '_' . $ib, $ext);
+                        if ($no_thumb == '') {
+                            $this->Services_model->img_thumb($type, $id . '_' . $ib, $ext);
+                            $data = array(
+                                $type.'_id' => $id,
+                                'type'  => $type,
+                                'image' => 'uploads/' . $type . '_image/' . $type . '_' . $id . '_' . $ib . $ext,
+                                'thumb' => 'uploads/' . $type . '_image/' . $type . '_' . $id . '_' . $ib .'_thumb' . $ext,
+                                'created_date' => time()
+                                );
+                                $this->db->insert($type.'_images',$data);
+                        }
+                }
            }
+           //$this->db->insert_batch($type.'_images',$data);
        }
    }
    
@@ -99,11 +119,69 @@ class Services_model extends MY_Model {
    }
    
    
+   function get_img_file($type, $id, $width = '100', $height = '100', $thumb = 'no', $src = 'no', $multi = '', $multi_num = '', $ext = '.jpg'){
+      
+       //$sql = 'SELECT IF('.$type.'_images.image != NULL,'.$type.'_images.image,"uploads/'.$type.'_image/default.jpg") as image FROM ' . $type . ' LEFT JOIN ' .$type.'_images ON '.$type.'.id = '.$type.'_images.'.$type.'_id WHERE '.$type.'.id = '.$id.' GROUP BY '.$type.'.id';
+       //$image = base_url().$this->db->query($sql)->row()->image; 
+       if ($multi == '') {
+            if ($thumb == 'no') {
+                $sql = 'SELECT IF('.$type.'_images.image != NULL OR '.$type.'_images.image != "" ,'.$type.'_images.image,"uploads/'.$type.'_image/default.jpg") as image FROM ' . $type . ' LEFT JOIN ' .$type.'_images ON '.$type.'.id = '.$type.'_images.'.$type.'_id WHERE '.$type.'.id = '.$id.' GROUP BY '.$type.'.id';
+                $srcl = base_url().$this->db->query($sql)->row()->image;
+            }elseif($thumb == 'thumb'){
+                $sql = 'SELECT IF('.$type.'_images.thumb != NULL OR '.$type.'_images.thumb != "" ,'.$type.'_images.thumb,"uploads/'.$type.'_image/default.jpg") as image FROM ' . $type . ' LEFT JOIN ' .$type.'_images ON '.$type.'.id = '.$type.'_images.'.$type.'_id WHERE '.$type.'.id = '.$id.' GROUP BY '.$type.'.id';
+                $srcl = base_url().$this->db->query($sql)->row()->image;
+            }
+
+            if ($src == 'no'){
+                return '<img src="' . $srcl . '" height="' . $height . '" width="' . $width . '" />';
+            } elseif ($src == 'src') {
+                return $srcl;
+            }
+       } else if ($multi == 'multi') {
+            $return = array();
+            if ($thumb == 'no') {
+                $sql = 'SELECT IF('.$type.'_images.image != NULL OR '.$type.'_images.image != "" ,'.$type.'_images.image,"uploads/'.$type.'_image/default.jpg") as image FROM ' . $type . ' LEFT JOIN ' .$type.'_images ON '.$type.'.id = '.$type.'_images.'.$type.'_id WHERE '.$type.'.id = '.$id;
+                $result =$this->db->query($sql)->result_array(); 
+            } elseif ($thumb == 'thumb') {
+                $sql = 'SELECT IF('.$type.'_images.thumb != NULL OR '.$type.'_images.thumb != "" ,'.$type.'_images.thumb,"uploads/'.$type.'_image/default.jpg") as image FROM ' . $type . ' LEFT JOIN ' .$type.'_images ON '.$type.'.id = '.$type.'_images.'.$type.'_id WHERE '.$type.'.id = '.$id;
+                $result = $this->db->query($sql)->result_array();
+            }
+
+            if ($src == 'no') {
+                foreach($result as $val){
+                    $return[] = '<img src="' .base_url().$val['image'] . '" height="' . $height . '" width="' . $width . '" />';
+                }
+            } elseif ($src == 'src') {
+                foreach($result as $val){
+                    $return[] = base_url().$val['image'];
+                }
+            }
+
+            if (!empty($return)) {
+                if ($multi_num == 'one') {
+                    return $return[0];
+                } else if ($multi_num == 'all') {
+                    return $return;
+                } else {
+                    $n = $multi_num - 1;
+                    unset($return[$n]);
+                    return $return;
+                }
+            } else {
+                if ($multi_num == 'one') {
+                    return base_url() . 'uploads/'. $type.'_image/default.jpg';
+                } else if ($multi_num == 'all') {
+                    return array(base_url() . 'uploads/'. $type.'_image/default.jpg');
+                } else {
+                    return array(base_url() . 'uploads/'. $type.'_image/default.jpg');
+                }
+            }
+        }
+   }
+
    // FILE_VIEW
    function file_view($type, $id, $width = '100', $height = '100', $thumb = 'no', $src = 'no', $multi = '', $multi_num = '', $ext = '.jpg')
    {
-
-
     // echo "Hii";die;
        if ($multi == '') {
            if (file_exists('uploads/' . $type . '_image/' . $type . '_' . $id . $ext)) {
@@ -177,7 +255,66 @@ class Services_model extends MY_Model {
        }
    }
    
-   
+   function img_file_dlt($type, $id, $ext = '.jpg', $multi = '', $m_sin = '')
+   {
+       if ($multi == '') {
+           if (file_exists('uploads/' . $type . '_image/' . $type . '_' . $id . $ext)) {
+               unlink("uploads/" . $type . "_image/" . $type . "_" . $id . $ext);
+               $this->db->where($type.'_id',$id);
+               $this->db->where('image',"uploads/" . $type . "_image/" . $type . "_" . $id . $ext);
+               $this->db->delete($type.'_images');
+           }
+           if (file_exists("uploads/" . $type . "_image/" . $type . "_" . $id . "_thumb" . $ext)) {
+               unlink("uploads/" . $type . "_image/" . $type . "_" . $id . "_thumb" . $ext);
+               $this->db->where($type.'_id',$id);
+               $this->db->where('image',"uploads/" . $type . "_image/" . $type . "_" . $id . "_thumb" . $ext);
+               $this->db->delete($type.'_images');
+           }
+           
+       } else if ($multi == 'multi') {
+           $num = $this->Services_model->get_type_name_by_id($type, $id, 'num_of_imgs');
+           if ($m_sin == '') {
+               $i = 0;
+               $p = 0;
+               while ($p < $num) {
+                   $i++;
+                   if (file_exists('uploads/' . $type . '_image/' . $type . '_' . $id . '_' . $i . $ext)) {
+                       unlink("uploads/" . $type . "_image/" . $type . "_" . $id . '_' . $i . $ext);
+                       $p++;
+                       $data['num_of_imgs'] = $num - 1;
+                       $this->db->where('id', $id);
+                       $this->db->update($type, $data);
+                   }
+    
+                   if (file_exists("uploads/" . $type . "_image/" . $type . "_" . $id . '_' . $i . "_thumb" . $ext)) {
+                       unlink("uploads/" . $type . "_image/" . $type . "_" . $id . '_' . $i . "_thumb" . $ext);
+                   }
+                   if ($i > 50) {
+                       break;
+                   }
+               }
+               $this->db->where($type.'_id',$id);
+               $this->db->delete($type.'_images');
+           } else {
+               if (file_exists('uploads/' . $type . '_image/' . $type . '_' . $id . '_' . $m_sin . $ext)) {
+                   unlink("uploads/" . $type . "_image/" . $type . "_" . $id . '_' . $m_sin . $ext);
+                   $this->db->where($type.'_id',$id);
+                   $this->db->where('image','uploads/' . $type . '_image/' . $type . '_' . $id . '_' . $m_sin . $ext);
+                   $this->db->delete($type.'_images');
+               }
+               if (file_exists("uploads/" . $type . "_image/" . $type . "_" . $id . '_' . $m_sin . "_thumb" . $ext)) {
+                   unlink("uploads/" . $type . "_image/" . $type . "_" . $id . '_' . $m_sin . "_thumb" . $ext);
+                   $this->db->where($type.'_id',$id);
+                   $this->db->where('image',"uploads/" . $type . "_image/" . $type . "_" . $id . '_' . $m_sin . "_thumb" . $ext);
+                   $this->db->delete($type.'_images');
+               }
+               $data['num_of_imgs'] = $num - 1;
+               $this->db->where('id', $id);
+               $this->db->update($type, $data);
+           }
+       }
+   }
+
    // FILE_VIEW
    function file_dlt($type, $id, $ext = '.jpg', $multi = '', $m_sin = '')
    {

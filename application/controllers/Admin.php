@@ -27,11 +27,10 @@ class Admin extends MY_Controller {
     function category($para1 = '', $para2 = '', $para3 = '')
     {
         if ($para1 == 'do_add') {
-            $data['category_name'] = $this->input->post('category_name');
+            $data['category_name']      = $this->input->post('category_name');
             $data['description']        = $this->input->post('description');
-            //$data['purchase_price']     = $this->input->post('purchase_price');
             $data['created_date']       = time();
-            // $data['added_by']           = json_encode(array('type'=>'admin','id'=>$this->session->userdata('user_id')));
+            //$data['added_by']         = json_encode(array('type'=>'admin','id'=>$this->session->userdata('user_id')));
             $data['status']             = $this->input->post('status');
             $this->db->insert('category', $data);
             $id = $this->db->insert_id();
@@ -331,6 +330,7 @@ class Admin extends MY_Controller {
             } else {
                 $num_of_imgs = count($_FILES["images"]['name']);
             }
+            
             $num                        = $this->Services_model->get_type_name_by_id('product', $para2, 'num_of_imgs');
             $data['title']              = $this->input->post('title');
             $data['category']           = $this->input->post('category');
@@ -373,7 +373,7 @@ class Admin extends MY_Controller {
             $data['name'] ="product_view";
             $this->admin_layout($data);
         } else if ($para1 == 'delete') {
-            $this->Services_model->file_dlt('product', $para2, '.jpg', 'multi');
+            $this->Services_model->img_file_dlt('product', $para2, '.jpg', 'multi');
             $this->db->where('id', $para2);
             $this->db->delete('product');
             $this->session->set_flashdata('success', 'Product Deleted Successfully !');
@@ -390,8 +390,11 @@ class Admin extends MY_Controller {
             <i class=\"icon-close text-danger\"></i>
             </a>";
             $this->datatables
-                    ->select("id,num_of_imgs,title,sale_price,current_stock,category,status")
-                    ->from('product');
+                    ->select("product.id as id,IF(product_images.image != NULL OR product_images.image != '' ,product_images.image,'uploads/product_image/default.jpg') as image,title,sale_price,current_stock,category.category_name,product.status")
+                    ->from('product')
+                    ->join('product_images','product.id = product_images.product_id','LEFT')
+                    ->join('category','category.id = product.category')
+                    ->group_by('product.id');
             $this->datatables->add_column("Actions", $action, "id");
             echo $this->datatables->generate();
             
@@ -464,7 +467,8 @@ class Admin extends MY_Controller {
 
         } else if ($para1 == 'dlt_img') {
             $a = explode('_', $para2);
-            $this->Services_model->file_dlt('product', $a[0], '.jpg', 'multi', $a[1]);
+            //print_r($a);die;
+            $this->Services_model->img_file_dlt('product', $a[0], '.jpg', 'multi', $a[1]);
             //recache();
         } else if ($para1 == 'set_status'){
             $key =      $_POST['key'];
@@ -495,14 +499,8 @@ class Admin extends MY_Controller {
             } else {
                 echo json_encode(array('status' => 0));
             }
-        // }else if ($para1 == 'add') {
-        //     $data['template'] ="product_add";
-        //     $data['name'] ="product_add";
-        //     $this->admin_layout($data);
-        } else {
-            //$page_data['page_name']   = "product";
-            //$this->db->where('added_by',json_encode(array('type'=>'admin','id'=>$this->session->userdata('vendor_id'))));
-            //$data['all_product'] = $this->db->get('product')->result_array();
+        
+        } else {            
             $data['template'] ="product_list";
             $data['name'] ="product_list";
             $this->admin_layout($data);
@@ -552,8 +550,6 @@ class Admin extends MY_Controller {
             // $this->admin_layout($data);
           
         } else if ($para1 == 'view') {
-
-            
             $data['vendor_data'] = $this->db->get_where('vendor', array(
                 'id' => $para2
             ))->result_array();
@@ -571,21 +567,21 @@ class Admin extends MY_Controller {
 
             
             $this->admin_layout($data);
-    //     } else if ($para1 == 'add') {
-    //         // $this->db->order_by('id', 'desc');
-    //         // $this->db->where('added_by',json_encode(array('type'=>'vendor','id'=>$this->session->userdata('vendor_id'))));
-    //         // $data['all_product'] = $this->db->get('product')->result_array();
-    //         // $query = $this->db->select('id,category_name')->from('category');
+            //     } else if ($para1 == 'add') {
+            //         // $this->db->order_by('id', 'desc');
+            //         // $this->db->where('added_by',json_encode(array('type'=>'vendor','id'=>$this->session->userdata('vendor_id'))));
+            //         // $data['all_product'] = $this->db->get('product')->result_array();
+            //         // $query = $this->db->select('id,category_name')->from('category');
 
-    //         // $data['cat_data'] = $query->result();
-            
-    //         $this->db->select('id,vendor_type'); 
-    // $this->db->from('vendor');   
-    // $data['ven_data'] = $this->db->get()->result();
-    //         // print_r($data['cat_data']);
-    //         $data['template'] ="vendor_add";
-    //         $data['name'] ="vendor_add";
-    //         $this->admin_layout($data);
+            //         // $data['cat_data'] = $query->result();
+                    
+            //         $this->db->select('id,vendor_type'); 
+            // $this->db->from('vendor');   
+            // $data['ven_data'] = $this->db->get()->result();
+            //         // print_r($data['cat_data']);
+            //         $data['template'] ="vendor_add";
+            //         $data['name'] ="vendor_add";
+            //         $this->admin_layout($data);
         
         } else if ($para1 == 'approval_set') {
             $vendor = $para2;

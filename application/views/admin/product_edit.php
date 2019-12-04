@@ -69,7 +69,8 @@
           <div class="row">
             <div class="form-group">
               <?php
-                $images = $this->Services_model->file_view('product',$row['id'],'','','thumb','src','multi','all');
+                $images = $this->Services_model->get_img_file('product',$row['id'],'','','thumb','src','multi','all');
+                
                 if($images){
                 if($images[0] != base_url().'uploads/product_image/default.jpg'){    
                 foreach ($images as $row1){
@@ -133,6 +134,7 @@
     var base_url= '<?php echo base_url();?>';
     $('.delete-div-wrap .close').on('click', function() { 
         var pid = $(this).closest('.delete-div-wrap').find('img').data('id'); 
+        alert(pid);
         var here = $(this); 
         var msg = 'Really want to delete this Image?'; 
         bootbox.confirm(msg, function(result) {

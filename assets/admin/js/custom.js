@@ -44,107 +44,7 @@ $(document).ready(function () {
         $(".select_all").prop('checked', $(this).prop("checked"));
     });
 });
-$.extend(true, $.fn.dataTable.defaults, {sDom: "<'row'<'col-md-6 text-left'l><'col-md-6 text-right'f>r>t<'row'<'col-md-6 text-left'i><'col-md-6 text-right'p>>", sPaginationType: "bootstrap", "fnDrawCallback": function () {
-        $(".tip").tooltip({html: true});
-        $(".popnote").popover();
-//        $('.checkbox').iCheck({checkboxClass: 'icheckbox_square-blue', radioClass: 'iradio_square-blue', increaseArea: '20%'});
-        $("input").addClass('input-xs');
-        $("select").addClass('select input-xs');
-    }});
 
-$.fn.dataTableExt.oApi.fnPagingInfo = function (a) {
-    return{iStart: a._iDisplayStart, iEnd: a.fnDisplayEnd(), iLength: a._iDisplayLength, iTotal: a.fnRecordsTotal(), iFilteredTotal: a.fnRecordsDisplay(), iPage: a._iDisplayLength === -1 ? 0 : Math.ceil(a._iDisplayStart / a._iDisplayLength), iTotalPages: a._iDisplayLength === -1 ? 0 : Math.ceil(a.fnRecordsDisplay() / a._iDisplayLength)}
-};
-$.extend($.fn.dataTableExt.oPagination, {bootstrap: {fnInit: function (e, b, d) {
-            var a = e.oLanguage.oPaginate;
-            var f = function (g) {
-                g.preventDefault();
-                if (e.oApi._fnPageChange(e, g.data.action)) {
-                    d(e)
-                }
-            };
-            $(b).append('<ul class="pagination "><li class="paginate_button page-item prev disabled"><a class="page-link" href="#"> ' + a.sPrevious + '</a></li><li class="paginate_button page-item next disabled"><a class="page-link" href="#">' + a.sNext + " </a></li></ul>");
-            var c = $("a", b);
-            $(c[0]).bind("click.DT", {action: "previous"}, f);
-            $(c[1]).bind("click.DT", {action: "next"}, f)
-        }, fnUpdate: function (c, k) {
-            var l = 5;
-            var e = c.oInstance.fnPagingInfo();
-            var h = c.aanFeatures.p;
-            var g, m, f, d, a, n, b = Math.floor(l / 2);
-            if (e.iTotalPages < l) {
-                a = 1;
-                n = e.iTotalPages
-            } else {
-                if (e.iPage <= b) {
-                    a = 1;
-                    n = l
-                } else {
-                    if (e.iPage >= (e.iTotalPages - b)) {
-                        a = e.iTotalPages - l + 1;
-                        n = e.iTotalPages
-                    } else {
-                        a = e.iPage - b + 1;
-                        n = a + l - 1
-                    }
-                }
-            }
-            for (g = 0, m = h.length; g < m; g++) {
-                $("li:gt(0)", h[g]).filter(":not(:last)").remove();
-                for (f = a; f <= n; f++) {
-                    d = (f == e.iPage + 1) ? 'class="paginate_button page-item active"' : "";
-                    $("<li " + d + '><a class="page-link" href="#">' + f + "</a></li>").insertBefore($("li:last", h[g])[0]).bind("click", function (i) {
-                        i.preventDefault();
-                        c._iDisplayStart = (parseInt($("a", this).text(), 10) - 1) * e.iLength;
-                        k(c)
-                    })
-                }
-                if (e.iPage === 0) {
-                    $("li:first", h[g]).addClass("disabled")
-                } else {
-                    $("li:first", h[g]).removeClass("disabled")
-                }
-                if (e.iPage === e.iTotalPages - 1 || e.iTotalPages === 0) {
-                    $("li:last", h[g]).addClass("disabled")
-                } else {
-                    $("li:last", h[g]).removeClass("disabled")
-                }
-            }
-        }}});
-if ($.fn.DataTable.TableTools) {
-    $.extend(true, $.fn.DataTable.TableTools.classes, {container: "btn-group", buttons: {normal: "btn btn-sm btn-primary", disabled: "disabled"}, collection: {container: "DTTT_dropdown dropdown-menu", buttons: {normal: "", disabled: "disabled"}}, print: {info: "DTTT_print_info modal"}, select: {row: "active"}});
-    $.extend(true, $.fn.DataTable.TableTools.DEFAULTS.oTags, {collection: {container: "ul", button: "li", liner: "a"}})
-
-}
-;
-jQuery.fn.dataTableExt.oApi.fnSetFilteringDelay = function (oSettings, iDelay) {
-    var _that = this;
-    if (iDelay === undefined) {
-        iDelay = 500;
-    }
-    this.each(function (i) {
-        $.fn.dataTableExt.iApiIndex = i;
-        var
-                $this = this,
-                oTimerId = null,
-                sPreviousSearch = null,
-                anControl = $('input', _that.fnSettings().aanFeatures.f);
-        anControl.unbind('keyup search input').bind('keyup search input', function () {
-            var $$this = $this;
-            if (sPreviousSearch === null || sPreviousSearch != anControl.val()) {
-                window.clearTimeout(oTimerId);
-                sPreviousSearch = anControl.val();
-                oTimerId = window.setTimeout(function () {
-                    $.fn.dataTableExt.iApiIndex = i;
-                    _that.fnFilter(anControl.val());
-                }, iDelay);
-            }
-        });
-        return this;
-    });
-    return this;
-
-};
 
 changeStatus = function (k, i, t) {
     chStatus = {key: k, id: i, tab: t};
@@ -287,7 +187,7 @@ exceldownload = function () {
     return false;
 }
 function setImg(x) {
-    return "<center><img src='" + site_url + "assets/images/banners/" + x + "' class='img-responsive' style='height:100px;width:150px;' alt='No image'/></center>";
+    return "<center><img src='" + site_url + x + "' class='img-responsive' style='height:70px;width:70px;' alt='No image'/></center>";
 }
 function setStatus(x) {
     if (x == 'Active') {

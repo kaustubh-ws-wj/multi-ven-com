@@ -21,7 +21,7 @@
                   <option value="1" >-Select Category-</option>
                   <?php foreach($category as $value){?>
                   <option value="<?php echo $value['id']; ?>"><?php echo $value['category_name']; ?></option>
-                  <?php }?>
+                  <?php } ?>
                 </select>
               </div>
             </div>
@@ -74,6 +74,7 @@
             </div>
           </div>
         </div>
+        
         <div class="row">
           <div class="col-md-6">
             <div class="form-group">

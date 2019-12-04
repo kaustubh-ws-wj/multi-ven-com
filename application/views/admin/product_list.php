@@ -72,12 +72,12 @@
                 nRow.className = "product";
                 return nRow;
             },
-            "aoColumns": [{"bSortable": false, "mRender": checkbox}, {'mRender': null },{'mRender': null},{'mRender': null},{'mRender': null},{'mRender': null}, {'mRender': setStatus}, {"bSortable": false}],
+            "aoColumns": [{"bSortable": false, "mRender": checkbox}, {"bSortable": false,'mRender': setImg },{'mRender': null},{'mRender': null},{'mRender': null},{'mRender': null}, {'mRender': setStatus}, {"bSortable": false}],
             "fnCreatedRow": function (nRow, aData, iDataIndex) {
                 $('td:eq(6) > label', nRow).attr('onclick', "changeStatus('id'," + aData[0] + ",'product')");
-                var img = setProdImg(aData[0]);
-                var imgTag = '<img style="height:70px;width:70px;" src="'+img+'">';
-                $('td:eq(1)', nRow).html(imgTag);
+                // var img = setProdImg(aData[0]);
+                // var imgTag = '<img style="height:70px;width:70px;" src="'+img+'">';
+                // $('td:eq(1)', nRow).html(imgTag);
             },
             "fnFooterCallback": function (nRow, aaData, iStart, iEnd, aiDisplay) {
             }
