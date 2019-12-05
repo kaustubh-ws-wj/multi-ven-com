@@ -240,7 +240,7 @@
 											</div>
 										</div>
 									</li>
-									<li><a href="#">Products</a></li>
+									<li><a href="<?php echo base_url();?>home/products/load">Products</a></li>
 								</ul>
 							</nav>
 						</div>

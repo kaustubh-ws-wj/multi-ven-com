@@ -13,6 +13,7 @@ class Home extends MY_Controller {
         $this->load->library('session');   
         $this->load->model('Home_model');
         $this->load->model('Services_model');
+        $this->load->library('Ajax_pagination');
     }
 
     public function index() {
@@ -183,4 +184,58 @@ class Home extends MY_Controller {
         }
     }
 
+
+    public function products($para1='', $para2=''){
+
+        if($para1 == 'fetch_data'){
+            sleep(1);
+            $minimum_price = $this->input->post('minimum_price');
+            $maximum_price = $this->input->post('maximum_price');
+
+            
+            $this->load->library('pagination');
+            $config['base_url'] = base_url().'home/product/fetch_data/';
+            $config['total_rows'] = $this->Home_model->count_all($minimum_price, $maximum_price);
+            $config['per_page'] = 9;
+            $config['uri_segment'] = 4;
+            $config['use_page_numbers'] = TRUE;
+            $config['full_tag_open'] = '<ul class="pagination">';
+            $config['full_tag_close'] = '</ul>';
+            $config['first_tag_open'] = '<li>';
+            $config['first_tag_close'] = '</li>';
+            $config['last_tag_open'] = '<li>';
+            $config['last_tag_close'] = '</li>';
+            $config['next_link'] = '&gt;';
+            $config['next_tag_open'] = '<li>';
+            $config['next_tag_close'] = '</li>';
+            $config['prev_link'] = '&lt;';
+            $config['prev_tag_open'] = '<li>';
+            $config['prev_tag_close'] = '</li>';
+            $config['cur_tag_open'] = "<li class='active'><a href='#'>";
+            $config['cur_tag_close'] = '</a></li>';
+            $config['num_tag_open'] = '<li>';
+            $config['num_tag_close'] = '</li>';
+            $config['num_links'] = 3;
+            $this->pagination->initialize($config);
+
+            $page = (int)$para2;
+            $start = (int)($page - 1) * (int)$config['per_page'];
+            
+            $output = array(
+                'pagination_link' => $this->pagination->create_links(),
+                'product_list'    => $this->Home_model->ajax_product_fetch_data($config["per_page"],$start, $minimum_price, $maximum_price)
+            );
+            echo json_encode($output);
+
+        }else{
+
+            $data['all_products'] = $this->db->get('product')->result_array();
+            $data['category'] = $this->Home_model->get_category_with_product_count('category');
+            $data['template'] = "products";
+            $data['name'] = "products";
+            $this->user_layout($data);
+        }
+    }
+
+    
 }

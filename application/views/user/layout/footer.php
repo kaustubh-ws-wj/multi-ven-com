@@ -209,8 +209,7 @@
 	<!-- nivo.slider.js -->
 	<script src="<?php echo USERASSETS ?>lib/js/jquery.nivo.slider.js" type="text/javascript"></script>
 	<script src="<?php echo USERASSETS ?>lib/home.js" type="text/javascript"></script>
-	<!-- jquery-ui js -->
-	<script src="<?php echo USERASSETS ?>js/jquery-ui.min.js"></script>
+	
 	<!-- scrollUp.min.js -->
 	<script src="<?php echo USERASSETS ?>js/jquery.scrollUp.min.js"></script>
 	<!-- jquery.parallax.js -->

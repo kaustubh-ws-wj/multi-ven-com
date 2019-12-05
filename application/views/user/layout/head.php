@@ -26,4 +26,6 @@
     <script src="<?php echo USERASSETS ?>plugins/bootstrap-table/bootstrap-table.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mouse0270-bootstrap-notify/3.1.5/bootstrap-notify.min.js" integrity="sha256-tfc2YVfGTx13W7THSjfmgGRj1VuDJiHx4ZWywAx6mb4=" crossorigin="anonymous"></script>
 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-notify/0.2.0/css/bootstrap-notify.css">
+    <!-- jquery-ui js -->
+	<script src="<?php echo USERASSETS ?>js/jquery-ui.min.js"></script>
 </head>

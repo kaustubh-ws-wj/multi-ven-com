@@ -21,22 +21,7 @@ class Vendor extends MY_Controller {
         $data['name'] = "vendor/dashboard";
         $this->user_layout($data);
     }
-    public function products($param1='',$param='')
-    {   
-        if($param1== 'add_product'){
-            $this->db->select('id,category_name'); 
-            $this->db->from('category');   
-            $data['cat_data'] = $this->db->get()->result();
-            $data['template'] = "vendor/add_product";
-            $data['name'] = "vendor/add_product";
-            $this->user_layout($data);    
-        }else{
-            $data['template'] = "vendor/product_list";
-            $data['name'] = "vendor/product_list";
-            $this->user_layout($data);
-        }
-        
-    }
+    
 
     /* Product add, edit, view, delete */
     function product($para1 = '', $para2 = '', $para3 = '')
@@ -181,8 +166,6 @@ class Vendor extends MY_Controller {
             $this->Services_model->file_dlt('product', $a[0], '.jpg', 'multi', $a[1]);
             //recache();
         } else if ($para1 == 'add') {
-
-          
             // print_r($data['cat_data']);die;
             $data['template'] = "vendor/add_product";
             $data['name'] = "vendor/add_product";

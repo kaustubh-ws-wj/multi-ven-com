@@ -240,7 +240,7 @@
     
     /*-----------------------------
         price-slider active
-    ------------------------------ */  
+    ------------------------------  
     $( "#slider-range" ).slider({
        range: true,
        min: 80,
@@ -251,7 +251,7 @@
        }
       });
     $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
-	   " - $" + $( "#slider-range" ).slider( "values", 1 ) ); 
+	   " - $" + $( "#slider-range" ).slider( "values", 1 ) ); */
     
     /*----------------
         Parallax
