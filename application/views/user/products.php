@@ -62,8 +62,8 @@
                             <p>
                                 <label class="range-text">Range:</label>
                                 <input type="text" style="border:0; color:#f6931f; font-weight:bold;" readonly="" id="amount">
-                                <input type="hidden" id="hidden_minimum_price">
-                                <input type="hidden" id="hidden_maximum_price">
+                                <input type="hidden" id="hidden_minimum_price" value="">
+                                <input type="hidden" id="hidden_maximum_price" value="">
 
                             </p>
                             <div id="slider-range" class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all"><div class="ui-slider-range ui-widget-header ui-corner-all" style="left: 0%; width: 100%;"></div><span tabindex="0" class="ui-slider-handle ui-state-default ui-corner-all" style="left: 0%;"></span><span tabindex="0" class="ui-slider-handle ui-state-default ui-corner-all" style="left: 100%;"></span></div>
@@ -504,10 +504,8 @@
                                                 url:"<?php echo base_url(); ?>home/products/fetch_data/"+page,
                                                 method:"POST",
                                                 dataType:"JSON",
-                                                data:{action:action, minimum_price:minimum_price, maximum_price:maximum_price},
-                                                cache       : false,
-                                                contentType : false,
-                                                processData : false,
+                                                data:{'action':action, 'minimum_price':minimum_price, 'maximum_price':maximum_price},
+                                               
                                                 success:function(data)
                                                 {
                                                     $('.filter_data').html(data.product_list);

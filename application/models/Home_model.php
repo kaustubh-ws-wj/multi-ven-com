@@ -64,7 +64,7 @@ class Home_model extends MY_Model {
             AND sale_price BETWEEN '".$minimum_price."' AND '".$maximum_price."'
         ";
         }
-
+        
         return $query;
     }
 

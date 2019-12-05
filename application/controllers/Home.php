@@ -189,8 +189,8 @@ class Home extends MY_Controller {
 
         if($para1 == 'fetch_data'){
             sleep(1);
-            $minimum_price = $this->input->post('minimum_price');
-            $maximum_price = $this->input->post('maximum_price');
+            $minimum_price = $_POST['minimum_price'];
+            $maximum_price = $_POST['maximum_price'];
 
             
             $this->load->library('pagination');
